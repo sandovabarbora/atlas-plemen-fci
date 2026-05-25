@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Atlas plemen — kynologický kvíz</title>
+<!-- PWA: installable, offline-capable -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#6b7d3a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Atlas plemen">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -275,6 +282,24 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   font-weight: 600;
   letter-spacing: -0.01em;
 }
+.feedback .sol-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.2rem;
+  color: var(--ink);
+}
+/* Multi-step placement: step counter + advance button */
+.q-progress-mini {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-deep);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.placement-advance { margin-top: 0.9rem; width: 100%; }
 .feedback dl {
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -752,6 +777,12 @@ footer a { color: var(--accent-deep); text-decoration: none; border-bottom: 1px 
       </div>
 
       <div class="settings-section">
+        <h3>Výběr plemen</h3>
+        <p>Jak se vybírá další plemeno. „Projet vše" jde náhodně, ale ukáže každé plemeno, než se začne opakovat. „Opakování" upřednostňuje plemena, která ti nejdou.</p>
+        <div class="mode-grid" id="selection-grid"></div>
+      </div>
+
+      <div class="settings-section">
         <h3>FCI skupiny</h3>
         <p>Zúžit testování pouze na vybrané skupiny.</p>
         <div class="group-grid" id="group-filter"></div>
@@ -980,8 +1011,10 @@ const Leitner = (function() {
     state = await Storage.get(STATE_KEY) || {
       breeds: {},   // { breed_id: { box: 1-5, correct: n, wrong: n, last_seen: ts } }
       session: { count: 0, total_correct: 0, total_attempts: 0 },
+      sweep: { queue: [] },  // shuffled coverage queue for the "projet vše" mode
       created: Date.now(),
     };
+    if (!state.sweep) state.sweep = { queue: [] };  // migrate older saved state
     return state;
   }
 
@@ -997,7 +1030,9 @@ const Leitner = (function() {
    * Pick next breed to test, given pool of eligible breeds.
    * Strategy: weighted box selection + occasional new breed introduction.
    */
-  function pickNextBreed(eligibleBreeds, recentIds = []) {
+  function pickNextBreed(eligibleBreeds, recentIds = [], strategy = 'srs') {
+    if (strategy === 'sweep') return pickSweep(eligibleBreeds, recentIds);
+
     // Group eligible breeds by box (0 = never seen)
     const byBox = [[], [], [], [], [], []]; // box 0..5
     for (const b of eligibleBreeds) {
@@ -1039,6 +1074,36 @@ const Leitner = (function() {
       }
     }
     return candidates[0][0];
+  }
+
+  /**
+   * Sweep selection: random order, but every eligible breed is shown once
+   * before any repeats. The queue persists across sessions, so coverage
+   * continues until the whole set is seen, then reshuffles into a new cycle.
+   */
+  function pickSweep(eligibleBreeds, recentIds = []) {
+    if (!state.sweep) state.sweep = { queue: [] };
+    const eligibleById = new Map(eligibleBreeds.map(b => [b.id, b]));
+
+    // Drop ids that are no longer eligible (e.g. group filter changed).
+    state.sweep.queue = state.sweep.queue.filter(id => eligibleById.has(id));
+
+    const pickFrom = () => state.sweep.queue.findIndex(id => !recentIds.includes(id));
+    let idx = pickFrom();
+    if (idx === -1) {
+      // Cycle exhausted (or all remaining were recent): start a fresh shuffle.
+      const ids = eligibleBreeds.map(b => b.id);
+      for (let i = ids.length - 1; i > 0; i--) {  // Fisher-Yates
+        const j = Math.floor(Math.random() * (i + 1));
+        [ids[i], ids[j]] = [ids[j], ids[i]];
+      }
+      state.sweep.queue = ids;
+      idx = pickFrom();
+      if (idx === -1) idx = 0;  // tiny pool: all recent, just take the first
+    }
+    const id = state.sweep.queue.splice(idx, 1)[0];
+    save().catch(() => {});  // persist coverage progress promptly
+    return eligibleById.get(id) || eligibleBreeds[Math.floor(Math.random() * eligibleBreeds.length)];
   }
 
   /**
@@ -1143,8 +1208,9 @@ const Settings = (function() {
 
   async function load() {
     s = await Storage.get(KEY) || {
-      modes: ['breed_name', 'fci_group'],  // active question types
+      modes: ['placement', 'flip'],  // active question types (combined exam-style by default)
       groups: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], // active groups (1-10 FCI + 11 non-FCI)
+      selection: 'sweep',  // 'sweep' = random but covers all; 'srs' = Leitner weighting
       session_length: 20,
     };
     return s;
@@ -1170,7 +1236,28 @@ const QuestionGen = (function() {
     if (mode === 'fci_group') return genFciGroup(breed);
     if (mode === 'fci_section') return genFciSection(breed);
     if (mode === 'variant') return genVariant(breed, allBreeds);
+    if (mode === 'placement') return genPlacement(breed, allBreeds);
+    if (mode === 'flip') return genFlip(breed);
     throw new Error('Unknown mode: ' + mode);
+  }
+
+  // Combined "what breed + where it belongs" as three sequential sub-questions.
+  // The learner answers all three on one photo; counted correct only if all hit.
+  function genPlacement(breed, allBreeds) {
+    return {
+      type: 'placement',
+      breed,
+      steps: [
+        genBreedName(breed, allBreeds),
+        genFciGroup(breed),
+        genFciSection(breed),
+      ],
+    };
+  }
+
+  // Flip card: photo, then reveal the full placement and self-grade.
+  function genFlip(breed) {
+    return { type: 'flip', breed, prompt: 'Co je to za plemeno a kam patří?' };
   }
 
   function genBreedName(breed, allBreeds) {
@@ -1291,9 +1378,9 @@ const QuestionGen = (function() {
   function validModesForBreed(breed, allBreeds) {
     // For non-FCI breeds (group 11), only ask about breed name and variant —
     // asking "which FCI group?" is meaningless for breeds not recognized by FCI.
-    const valid = ['breed_name'];
+    const valid = ['breed_name', 'flip'];
     if (breed.group <= 10) {
-      valid.push('fci_group', 'fci_section');
+      valid.push('fci_group', 'fci_section', 'placement');
     }
     const baseName = stripVariant(breed.cs);
     const hasSiblings = allBreeds.some(b => b.id !== breed.id && stripVariant(b.cs) === baseName);
@@ -1385,7 +1472,7 @@ const Quiz = (function() {
     }
 
     // Pick next breed (avoid showing same one twice in a row)
-    currentBreed = Leitner.pickNextBreed(eligible, recentBreedIds.slice(-5));
+    currentBreed = Leitner.pickNextBreed(eligible, recentBreedIds.slice(-5), settings.selection || 'sweep');
     if (!currentBreed) {
       renderEmpty('Žádné plemeno nelze vybrat. Zkontroluj nastavení.');
       return;
@@ -1470,17 +1557,24 @@ const Quiz = (function() {
     }
   }
 
-  function renderQuestion() {
-    const card = document.getElementById('quiz-card');
-    const q = currentQuestion;
-    const showCorrectAnswer = (q.type !== 'breed_name'); // for non-name modes, show breed name on the photo
-
-    card.innerHTML = `
+  // Shared photo frame markup so fetchAndShowImage works across all modes.
+  function photoFrameHtml() {
+    return `
       <div class="photo-frame" id="photo-frame">
         <img alt="">
         <div class="placeholder"><span class="spinner"></span>&nbsp; načítám</div>
         <div class="credit"></div>
-      </div>
+      </div>`;
+  }
+
+  function renderQuestion() {
+    const q = currentQuestion;
+    if (q.type === 'placement') return renderPlacement();
+    if (q.type === 'flip') return renderFlip();
+
+    const card = document.getElementById('quiz-card');
+    card.innerHTML = `
+      ${photoFrameHtml()}
       <div class="q-label">${labelForMode(q.type)}</div>
       <h2 class="q-text">${escapeHtml(q.prompt)}</h2>
       <div class="options ${q.grid_2 ? 'grid-2' : ''}" id="options">
@@ -1498,6 +1592,110 @@ const Quiz = (function() {
     });
 
     document.getElementById('quiz-actions').style.display = 'none';
+  }
+
+  // --- Combined "breed + placement" multi-step mode ---
+  function renderPlacement() {
+    const card = document.getElementById('quiz-card');
+    card.innerHTML = `
+      ${photoFrameHtml()}
+      <div class="q-label">${labelForMode('placement')}</div>
+      <div id="placement-step"></div>
+      <div class="feedback" id="feedback"></div>
+    `;
+    document.getElementById('quiz-actions').style.display = 'none';
+    currentQuestion._stepIdx = 0;
+    currentQuestion._allCorrect = true;
+    renderPlacementStep();
+  }
+
+  function renderPlacementStep() {
+    const q = currentQuestion;
+    const step = q.steps[q._stepIdx];
+    const total = q.steps.length;
+    const host = document.getElementById('placement-step');
+    host.innerHTML = `
+      <div class="q-progress-mini">${q._stepIdx + 1}/${total}</div>
+      <h2 class="q-text">${escapeHtml(step.prompt)}</h2>
+      <div class="options ${step.grid_2 ? 'grid-2' : ''}" id="options">
+        ${step.options.map((o, i) => `<button class="opt" data-idx="${i}">${escapeHtml(o.label)}</button>`).join('')}
+      </div>
+    `;
+    host.querySelectorAll('.opt').forEach((el, idx) => {
+      el.addEventListener('click', () => placementAnswer(idx));
+    });
+  }
+
+  function placementAnswer(idx) {
+    const q = currentQuestion;
+    const step = q.steps[q._stepIdx];
+    const chosen = step.options[idx];
+    if (!chosen.correct) q._allCorrect = false;
+
+    const optEls = document.querySelectorAll('#placement-step .opt');
+    optEls.forEach((el, i) => {
+      el.disabled = true;
+      if (i === idx) el.classList.add(chosen.correct ? 'correct' : 'wrong');
+      else if (step.options[i].correct) el.classList.add('show-correct');
+    });
+
+    const isLast = q._stepIdx >= q.steps.length - 1;
+    const host = document.getElementById('placement-step');
+    const advance = document.createElement('button');
+    advance.className = 'btn-primary placement-advance';
+    advance.textContent = isLast ? 'Vyhodnotit ↓' : 'Další krok →';
+    advance.addEventListener('click', async () => {
+      advance.disabled = true;
+      if (isLast) {
+        await recordResult(q._allCorrect);
+        showFeedback(q._allCorrect);
+        document.getElementById('quiz-actions').style.display = 'flex';
+      } else {
+        q._stepIdx++;
+        renderPlacementStep();
+      }
+    });
+    host.appendChild(advance);
+  }
+
+  // --- Flip card (otáčecí kartička) ---
+  function renderFlip() {
+    const card = document.getElementById('quiz-card');
+    const q = currentQuestion;
+    card.innerHTML = `
+      ${photoFrameHtml()}
+      <div class="q-label">${labelForMode('flip')}</div>
+      <h2 class="q-text">${escapeHtml(q.prompt)}</h2>
+      <div class="options" id="options">
+        <button class="opt" id="flip-reveal">Ukaž odpověď</button>
+      </div>
+      <div class="feedback" id="feedback"></div>
+    `;
+    document.getElementById('quiz-actions').style.display = 'none';
+    document.getElementById('flip-reveal').addEventListener('click', flipReveal);
+  }
+
+  function flipReveal() {
+    const b = currentBreed;
+    const fb = document.getElementById('feedback');
+    fb.innerHTML = solutionDl(b) + `
+      <div class="options grid-2" style="margin-top:0.75rem">
+        <button class="opt" id="flip-known">✓ Znal/a</button>
+        <button class="opt" id="flip-unknown">✗ Neznal/a</button>
+      </div>`;
+    fb.className = 'feedback visible';
+    document.getElementById('options').style.display = 'none';
+    document.getElementById('flip-known').addEventListener('click', () => flipGrade(true));
+    document.getElementById('flip-unknown').addEventListener('click', () => flipGrade(false));
+  }
+
+  async function flipGrade(correct) {
+    if (awaitingNext) return;
+    await recordResult(correct);
+    const fb = document.getElementById('feedback');
+    fb.className = 'feedback visible ' + (correct ? 'correct' : 'wrong');
+    fb.querySelectorAll('.opt').forEach(el => { el.disabled = true; });
+    document.getElementById('quiz-actions').style.display = 'flex';
   }
 
   function renderEmpty(message) {
@@ -1529,10 +1727,15 @@ const Quiz = (function() {
       }
     });
 
-    // Record in Leitner
-    await Leitner.recordAnswer(currentBreed.id, correct);
+    await recordResult(correct);
+    showFeedback(correct);
+    document.getElementById('quiz-actions').style.display = 'flex';
+  }
 
-    // Session tracking
+  // Record one answer in Leitner + session state (shared by all modes).
+  async function recordResult(correct) {
+    awaitingNext = true;
+    await Leitner.recordAnswer(currentBreed.id, correct);
     session.index++;
     if (correct) {
       session.correct++;
@@ -1541,25 +1744,19 @@ const Quiz = (function() {
       streak = 0;
     }
     updateProgress();
-
-    // Show feedback block
-    showFeedback(correct);
-
-    // Show actions
-    document.getElementById('quiz-actions').style.display = 'flex';
   }
 
-  function showFeedback(correct) {
-    const b = currentBreed;
-    const fb = document.getElementById('feedback');
+  // The breed solution as a <dl> (FCI number prefix when available), reused by
+  // the feedback block and the flip-card reveal.
+  function solutionDl(b) {
     const groupName = BREED_DB.group_names[b.group];
     const sectionName = BREED_DB.sections[b.group][b.section];
+    const fciPrefix = b.fci_number ? `FCI #${b.fci_number} · ` : '';
     const variantsHtml = (b.varieties && b.varieties.length > 0)
       ? `<dt>Varianty</dt><dd class="varieties">${b.varieties.map(v => `<span class="variety-pill">${escapeHtml(v)}</span>`).join('')}</dd>`
       : '';
-
-    fb.innerHTML = `
-      <h4>${correct ? '✓ Správně' : '✗ Špatně'} — ${escapeHtml(b.cs)}</h4>
+    return `
+      <div class="sol-name">${escapeHtml(fciPrefix)}${escapeHtml(b.cs)}</div>
       <dl>
         <dt>FCI skupina</dt>
         <dd><strong>${toRoman(b.group)}.</strong> ${escapeHtml(groupName)}</dd>
@@ -1570,8 +1767,12 @@ const Quiz = (function() {
         <dt>Originál</dt>
         <dd><em>${escapeHtml(b.en)}</em></dd>
         ${variantsHtml}
-      </dl>
-    `;
+      </dl>`;
+  }
+
+  function showFeedback(correct) {
+    const fb = document.getElementById('feedback');
+    fb.innerHTML = `<h4>${correct ? '✓ Správně' : '✗ Špatně'}</h4>` + solutionDl(currentBreed);
     fb.className = 'feedback visible ' + (correct ? 'correct' : 'wrong');
   }
 
@@ -1581,6 +1782,8 @@ const Quiz = (function() {
       'fci_group': 'FCI skupina',
       'fci_section': 'FCI sekce',
       'variant': 'Varianta',
+      'placement': 'Plemeno + zařazení',
+      'flip': 'Otáčecí kartička',
     }[mode] || mode;
   }
 
@@ -1763,6 +1966,8 @@ function renderSettings() {
 
   // Modes
   const modes = [
+    { id: 'placement', label: 'Plemeno + zařazení', desc: 'Foto → plemeno, skupina, sekce' },
+    { id: 'flip', label: 'Otáčecí kartička', desc: 'Foto → odhalit → znal/neznal' },
     { id: 'breed_name', label: 'Plemeno', desc: 'Foto → název' },
     { id: 'fci_group', label: 'FCI skupina', desc: 'Foto → I.–X.' },
     { id: 'fci_section', label: 'FCI sekce', desc: 'Sekce ve skupině' },
@@ -1785,6 +1990,26 @@ function renderSettings() {
         modes.push(mode);
       }
       await Settings.update({ modes });
+      renderSettings();
+    });
+  });
+
+  // Breed selection strategy
+  const selections = [
+    { id: 'sweep', label: 'Projet vše', desc: 'Náhodně, ale každé plemeno než se opakuje' },
+    { id: 'srs', label: 'Opakování', desc: 'Leitner: víc to, co ti nejde' },
+  ];
+  const selectionGrid = document.getElementById('selection-grid');
+  const activeSelection = settings.selection || 'sweep';
+  selectionGrid.innerHTML = selections.map(s => `
+    <button class="mode-chip ${activeSelection === s.id ? 'active' : ''}" data-selection="${s.id}">
+      <strong>${s.label}</strong>
+      <small>${s.desc}</small>
+    </button>
+  `).join('');
+  selectionGrid.querySelectorAll('.mode-chip').forEach(el => {
+    el.addEventListener('click', async () => {
+      await Settings.update({ selection: el.getAttribute('data-selection') });
       renderSettings();
     });
   });
@@ -1911,6 +2136,16 @@ init().catch(e => {
   console.error('[Atlas] Init failed:', e);
   document.body.innerHTML = '<div style="padding:2rem;font-family:system-ui">Aplikace nemohla startovat: ' + escapeHtml(e.message) + '</div>';
 });
+
+// Register the service worker (offline shell + photo cache). Only over
+// http(s); skipped on file:// where service workers are unavailable.
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(err => {
+      console.warn('[Atlas] SW registration failed:', err);
+    });
+  });
+}
 </script>
 </body>
 </html>

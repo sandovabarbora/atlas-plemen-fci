@@ -1,0 +1,26 @@
+{
+  "name": "Atlas plemen FCI",
+  "short_name": "Atlas plemen",
+  "description": "Kvíz pro přípravu na kynologické zkoušky: FCI plemena, skupiny a sekce.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "cs",
+  "theme_color": "#6b7d3a",
+  "background_color": "#f4ede0",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
