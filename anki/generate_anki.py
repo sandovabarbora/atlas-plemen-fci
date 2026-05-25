@@ -561,9 +561,9 @@ def parse_args() -> argparse.Namespace:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
-    parser.add_argument("--db", type=Path, default=Path("breeds.json"),
-                        help="Cesta k breeds.json")
-    parser.add_argument("--output", type=Path, default=Path("atlas-plemen-fci.apkg"),
+    parser.add_argument("--db", type=Path, default=Path("data/breeds.json"),
+                        help="Cesta k breeds.json (default: data/breeds.json od kořene repa)")
+    parser.add_argument("--output", type=Path, default=Path("dist/atlas-plemen-fci.apkg"),
                         help="Výstupní .apkg soubor")
     parser.add_argument("--photo-dir", type=Path, default=Path(".photo_cache"),
                         help="Adresář pro cachování fotek")
@@ -613,6 +613,7 @@ def main() -> int:
     deck, media_files = build_deck(db, fetcher, filter_groups, args.limit)
 
     logger.info("Balím .apkg…")
+    args.output.parent.mkdir(parents=True, exist_ok=True)
     pkg = genanki.Package(deck)
     pkg.media_files = [str(p) for p in media_files]
     pkg.write_to_file(str(args.output))
