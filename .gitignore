@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Photo cache (binary, regenerable)
+.photo_cache/
+
+# Generated reports and build artifacts
+reports/
+dist/
+
+# OS / editor
+.DS_Store
+
+# Claude Code harness scaffolding (not part of project)
+.agents/
+.skills/
+skills-lock.json

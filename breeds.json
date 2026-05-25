@@ -1,0 +1,4543 @@
+{
+  "version": "1.0",
+  "source": "ČMKU oficiální rozdělení plemen dle FCI",
+  "source_url": "https://www.cmku.cz/data/dokumenty/437-priloha-vr-rozdeleni-plemen-na-vystavach.pdf",
+  "sections": {
+    "1": {
+      "1.1": "Ovčáci",
+      "1.2": "Honáci (kromě švýcarských)"
+    },
+    "2": {
+      "2.1": "Pinčové a knírači",
+      "2.2": "Molossoidní plemena",
+      "2.3": "Švýcarští salašničtí psi"
+    },
+    "3": {
+      "3.1": "Velcí a střední teriéři",
+      "3.2": "Malí teriéři",
+      "3.3": "Bullteriéři",
+      "3.4": "Toy teriéři"
+    },
+    "4": {
+      "4.1": "Jezevčíci"
+    },
+    "5": {
+      "5.1": "Severští saňoví psi",
+      "5.2": "Severští lovečtí psi",
+      "5.3": "Severští hlídací a pastevečtí psi",
+      "5.4": "Evropští špicové",
+      "5.5": "Asijští špicové",
+      "5.6": "Primitivní plemena",
+      "5.7": "Primitivní lovecká plemena",
+      "5.8": "Primitivní lovecká s hřebenem na hřbetu"
+    },
+    "6": {
+      "6.1": "Honiči",
+      "6.2": "Barváři",
+      "6.3": "Příbuzná plemena"
+    },
+    "7": {
+      "7.1": "Kontinentální ohaři",
+      "7.2": "Britští a irští ohaři a setři"
+    },
+    "8": {
+      "8.1": "Retrívři",
+      "8.2": "Slídiči",
+      "8.3": "Vodní psi"
+    },
+    "9": {
+      "9.1": "Bišonci a podobní",
+      "9.2": "Pudl",
+      "9.3": "Malí belgičtí psi",
+      "9.4": "Naháči",
+      "9.5": "Tibetská plemena",
+      "9.6": "Čivava",
+      "9.7": "Angličtí toy španělé",
+      "9.8": "Japan-chin a pekingský psík",
+      "9.9": "Kontinentální toy španěl a ruský toy",
+      "9.10": "Kromfohrländer",
+      "9.11": "Malý molossoid"
+    },
+    "10": {
+      "10.1": "Dlouhosrstí nebo třásňatí chrti",
+      "10.2": "Drsnosrstí chrti",
+      "10.3": "Krátkosrstí chrti"
+    },
+    "11": {
+      "11.1": "Buldoci a bull teriéři (non-FCI)",
+      "11.2": "Američtí honiči a curs",
+      "11.3": "Pracovní a pastevečtí (non-FCI)",
+      "11.4": "Severští a primitivní (non-FCI)",
+      "11.5": "Malí teriéři (non-FCI)",
+      "11.6": "Národní a laboratorní plemena"
+    }
+  },
+  "group_names": {
+    "1": "Plemena ovčácká, pastevecká a honácká (mimo švýcarských salašnických psů)",
+    "2": "Pinčové, knírači, plemena molossoidní a švýcarští salašničtí psi",
+    "3": "Teriéři",
+    "4": "Jezevčíci",
+    "5": "Špicové a primitivní plemena",
+    "6": "Honiči, barváři a příbuzná plemena",
+    "7": "Ohaři",
+    "8": "Slídiči, retrívři a vodní psi",
+    "9": "Společenská plemena",
+    "10": "Chrti",
+    "11": "Plemena neuznaná FCI"
+  },
+  "breeds": [
+    {
+      "id": "breed_000",
+      "cs": "Australská kelpie",
+      "en": "Australian Kelpie",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Austrálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_001",
+      "cs": "Australský honácký pes",
+      "en": "Australian Cattle Dog",
+      "group": 1,
+      "section": "1.2",
+      "section_name": "Honáci (kromě švýcarských)",
+      "country": "Austrálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_002",
+      "cs": "Australský honácký pes s krátkým ocasem",
+      "en": "Australian Stumpy Tail Cattle Dog",
+      "group": 1,
+      "section": "1.2",
+      "section_name": "Honáci (kromě švýcarských)",
+      "country": "Austrálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_003",
+      "cs": "Australský ovčák",
+      "en": "Australian Shepherd",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_004",
+      "cs": "Bearded kolie",
+      "en": "Bearded Collie",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_005",
+      "cs": "Belgický ovčák — Groenendael",
+      "en": "Belgian Shepherd Groenendael",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_006",
+      "cs": "Belgický ovčák — Laekenois",
+      "en": "Belgian Shepherd Laekenois",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_007",
+      "cs": "Belgický ovčák — Malinois",
+      "en": "Belgian Shepherd Malinois",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_008",
+      "cs": "Belgický ovčák — Tervueren",
+      "en": "Belgian Shepherd Tervueren",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_009",
+      "cs": "Bergamský ovčák",
+      "en": "Bergamasco Shepherd",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_010",
+      "cs": "Beauceron",
+      "en": "Berger de Beauce",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_011",
+      "cs": "Bílý švýcarský ovčák",
+      "en": "White Swiss Shepherd",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Švýcarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_012",
+      "cs": "Bobtail",
+      "en": "Old English Sheepdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_013",
+      "cs": "Border kolie",
+      "en": "Border Collie",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_014",
+      "cs": "Briard",
+      "en": "Berger de Brie",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Francie",
+      "varieties": [
+        "černý",
+        "plavý",
+        "šedý"
+      ]
+    },
+    {
+      "id": "breed_015",
+      "cs": "Cao de Serra de Aires",
+      "en": "Portuguese Sheepdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Portugalsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_016",
+      "cs": "Československý vlčák",
+      "en": "Czechoslovakian Wolfdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "ČR/SR",
+      "varieties": []
+    },
+    {
+      "id": "breed_017",
+      "cs": "Flanderský bouvier",
+      "en": "Bouvier des Flandres",
+      "group": 1,
+      "section": "1.2",
+      "section_name": "Honáci (kromě švýcarských)",
+      "country": "Belgie/Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_018",
+      "cs": "Holandský ovčácký pudl (Schapendoes)",
+      "en": "Schapendoes",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Nizozemsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_019",
+      "cs": "Holandský ovčák",
+      "en": "Dutch Shepherd",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Nizozemsko",
+      "varieties": [
+        "krátkosrstý",
+        "dlouhosrstý",
+        "drsnosrstý"
+      ]
+    },
+    {
+      "id": "breed_020",
+      "cs": "Chorvatský ovčák",
+      "en": "Croatian Sheepdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Chorvatsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_021",
+      "cs": "Jihoruský ovčák",
+      "en": "South Russian Shepherd Dog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Rusko",
+      "varieties": []
+    },
+    {
+      "id": "breed_022",
+      "cs": "Katalánský ovčák",
+      "en": "Catalan Sheepdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_023",
+      "cs": "Kolie dlouhosrstá",
+      "en": "Collie Rough",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_024",
+      "cs": "Kolie krátkosrstá",
+      "en": "Collie Smooth",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_025",
+      "cs": "Komondor",
+      "en": "Komondor",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Maďarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_026",
+      "cs": "Kuvasz",
+      "en": "Kuvasz",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Maďarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_027",
+      "cs": "Maďarský ovčák (Mudi)",
+      "en": "Mudi",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Maďarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_028",
+      "cs": "Maremmansko-abruzský pastevecký pes",
+      "en": "Maremmano-Abruzzese Sheepdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_029",
+      "cs": "Malorský ovčák",
+      "en": "Majorca Shepherd Dog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Španělsko",
+      "varieties": [
+        "krátkosrstý",
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_030",
+      "cs": "Německý ovčák",
+      "en": "German Shepherd",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Německo",
+      "varieties": [
+        "krátkosrstý",
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_031",
+      "cs": "Pikardský ovčák",
+      "en": "Berger Picard",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_032",
+      "cs": "Podhalaňský ovčák",
+      "en": "Polish Tatra Sheepdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Polsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_033",
+      "cs": "Polský ovčák nížinný",
+      "en": "Polish Lowland Sheepdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Polsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_034",
+      "cs": "Puli",
+      "en": "Puli",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Maďarsko",
+      "varieties": [
+        "černý",
+        "bílý",
+        "fakó",
+        "maškara"
+      ]
+    },
+    {
+      "id": "breed_035",
+      "cs": "Pumi",
+      "en": "Pumi",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Maďarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_036",
+      "cs": "Pyrenejský ovčák s dlouhou srstí v obličeji",
+      "en": "Pyrenean Shepherd Long-haired",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_037",
+      "cs": "Pyrenejský ovčák s krátkou srstí v obličeji",
+      "en": "Pyrenean Shepherd Smooth-faced",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_038",
+      "cs": "Rumunský karpatský ovčák",
+      "en": "Romanian Carpathian Shepherd",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Rumunsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_039",
+      "cs": "Rumunský mioritic ovčák",
+      "en": "Romanian Mioritic Shepherd",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Rumunsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_040",
+      "cs": "Saarlosův vlčák",
+      "en": "Saarloos Wolfdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Nizozemsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_041",
+      "cs": "Sheltie",
+      "en": "Shetland Sheepdog",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_042",
+      "cs": "Slovenský čuvač",
+      "en": "Slovak Cuvac",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Slovensko",
+      "varieties": []
+    },
+    {
+      "id": "breed_043",
+      "cs": "Šiperka",
+      "en": "Schipperke",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_044",
+      "cs": "Welsh Corgi Cardigan",
+      "en": "Welsh Corgi Cardigan",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_045",
+      "cs": "Welsh Corgi Pembroke",
+      "en": "Welsh Corgi Pembroke",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_046",
+      "cs": "Ardenský bouvier",
+      "en": "Bouvier des Ardennes",
+      "group": 1,
+      "section": "1.2",
+      "section_name": "Honáci (kromě švýcarských)",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_047",
+      "cs": "Lancashirský patař",
+      "en": "Lancashire Heeler",
+      "group": 1,
+      "section": "1.2",
+      "section_name": "Honáci (kromě švýcarských)",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_048",
+      "cs": "Chodský pes",
+      "en": "Bohemian Shepherd",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "ČR",
+      "varieties": []
+    },
+    {
+      "id": "breed_049",
+      "cs": "Miniaturní americký ovčák",
+      "en": "Miniature American Shepherd",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_050",
+      "cs": "Šarplaninský pastevecký pes",
+      "en": "Sarplaninac",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Severní Makedonie",
+      "varieties": []
+    },
+    {
+      "id": "breed_051",
+      "cs": "Bernský salašnický pes",
+      "en": "Bernese Mountain Dog",
+      "group": 2,
+      "section": "2.3",
+      "section_name": "Švýcarští salašničtí psi",
+      "country": "Švýcarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_052",
+      "cs": "Appenzellský salašnický pes",
+      "en": "Appenzeller Sennenhund",
+      "group": 2,
+      "section": "2.3",
+      "section_name": "Švýcarští salašničtí psi",
+      "country": "Švýcarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_053",
+      "cs": "Entlebuchský salašnický pes",
+      "en": "Entlebucher Mountain Dog",
+      "group": 2,
+      "section": "2.3",
+      "section_name": "Švýcarští salašničtí psi",
+      "country": "Švýcarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_054",
+      "cs": "Novofundlandský pes",
+      "en": "Newfoundland",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Kanada",
+      "varieties": []
+    },
+    {
+      "id": "breed_055",
+      "cs": "Velký švýcarský salašnický pes",
+      "en": "Greater Swiss Mountain Dog",
+      "group": 2,
+      "section": "2.3",
+      "section_name": "Švýcarští salašničtí psi",
+      "country": "Švýcarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_056",
+      "cs": "Svatobernardský pes",
+      "en": "St. Bernard",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Švýcarsko",
+      "varieties": [
+        "krátkosrstý",
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_057",
+      "cs": "Španělský mastin",
+      "en": "Spanish Mastiff",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_058",
+      "cs": "Pyrenejský mastin",
+      "en": "Pyrenean Mastiff",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_059",
+      "cs": "Rafeiro do Alentejo",
+      "en": "Rafeiro do Alentejo",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Portugalsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_060",
+      "cs": "Bordeauxská doga",
+      "en": "Dogue de Bordeaux",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_061",
+      "cs": "Pyrenejský horský pes",
+      "en": "Great Pyrenees",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_062",
+      "cs": "Dobrman",
+      "en": "Doberman",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Německo",
+      "varieties": [
+        "černá s pálením",
+        "hnědá s pálením"
+      ]
+    },
+    {
+      "id": "breed_063",
+      "cs": "Německý boxer",
+      "en": "German Boxer",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Německo",
+      "varieties": [
+        "plavý",
+        "žíhaný"
+      ]
+    },
+    {
+      "id": "breed_064",
+      "cs": "Estrelský pastevecký pes",
+      "en": "Estrela Mountain Dog",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Portugalsko",
+      "varieties": [
+        "krátkosrstý",
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_065",
+      "cs": "Leonberger",
+      "en": "Leonberger",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_066",
+      "cs": "Rotvajler",
+      "en": "Rottweiler",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_067",
+      "cs": "Anglický buldok",
+      "en": "Bulldog",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_068",
+      "cs": "Bullmastif",
+      "en": "Bullmastiff",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_069",
+      "cs": "Cao de Castro Laboreiro",
+      "en": "Castro Laboreiro Dog",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Portugalsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_070",
+      "cs": "Knírač velký",
+      "en": "Giant Schnauzer",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Německo",
+      "varieties": [
+        "čistě černá",
+        "pepř a sůl",
+        "černostříbřitá"
+      ]
+    },
+    {
+      "id": "breed_071",
+      "cs": "Knírač střední",
+      "en": "Standard Schnauzer",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Německo",
+      "varieties": [
+        "čistě černá",
+        "pepř a sůl"
+      ]
+    },
+    {
+      "id": "breed_072",
+      "cs": "Knírač malý",
+      "en": "Miniature Schnauzer",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Německo",
+      "varieties": [
+        "čistě černá",
+        "pepř a sůl",
+        "černostříbřitá",
+        "bílá"
+      ]
+    },
+    {
+      "id": "breed_073",
+      "cs": "Německý pinč",
+      "en": "German Pinscher",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Německo",
+      "varieties": [
+        "červenohnědá",
+        "černá s pálením"
+      ]
+    },
+    {
+      "id": "breed_074",
+      "cs": "Trpasličí pinč",
+      "en": "Miniature Pinscher",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Německo",
+      "varieties": [
+        "červenohnědá",
+        "černá s pálením"
+      ]
+    },
+    {
+      "id": "breed_075",
+      "cs": "Opičí pinč",
+      "en": "Affenpinscher",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_076",
+      "cs": "Rakouský krátkosrstý pinč",
+      "en": "Austrian Pinscher",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Rakousko",
+      "varieties": []
+    },
+    {
+      "id": "breed_077",
+      "cs": "Hovawart",
+      "en": "Hovawart",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_078",
+      "cs": "Neapolský mastin",
+      "en": "Neapolitan Mastiff",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_079",
+      "cs": "Brazilská fila",
+      "en": "Fila Brasileiro",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Brazílie",
+      "varieties": []
+    },
+    {
+      "id": "breed_080",
+      "cs": "Landseer",
+      "en": "Landseer",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Německo/Švýcarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_081",
+      "cs": "Tibetská doga",
+      "en": "Tibetan Mastiff",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Tibet",
+      "varieties": []
+    },
+    {
+      "id": "breed_082",
+      "cs": "Německá doga",
+      "en": "Great Dane",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Německo",
+      "varieties": [
+        "žlutá",
+        "žíhaná",
+        "černá",
+        "skvrnitá",
+        "modrá"
+      ]
+    },
+    {
+      "id": "breed_083",
+      "cs": "Aidi",
+      "en": "Aidi",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Maroko",
+      "varieties": []
+    },
+    {
+      "id": "breed_084",
+      "cs": "Perro Dogo Mallorquin (Ca de Bou)",
+      "en": "Perro Dogo Mallorquin",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_085",
+      "cs": "Cão Fila de São Miguel",
+      "en": "Cão Fila de São Miguel",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Portugalsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_086",
+      "cs": "Tosa-Inu",
+      "en": "Tosa",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_087",
+      "cs": "Anglický mastif",
+      "en": "Mastiff",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_088",
+      "cs": "Argentinská doga",
+      "en": "Dogo Argentino",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Argentina",
+      "varieties": []
+    },
+    {
+      "id": "breed_089",
+      "cs": "Holandský pinč",
+      "en": "Hollandse Smoushond",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Nizozemsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_090",
+      "cs": "Shar-Pei",
+      "en": "Shar Pei",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Čína",
+      "varieties": []
+    },
+    {
+      "id": "breed_091",
+      "cs": "Dánská doga (Broholmer)",
+      "en": "Broholmer",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Dánsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_092",
+      "cs": "Černý teriér",
+      "en": "Black Russian Terrier",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Rusko",
+      "varieties": []
+    },
+    {
+      "id": "breed_093",
+      "cs": "Kavkazský pastevecký pes",
+      "en": "Caucasian Shepherd Dog",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Rusko",
+      "varieties": []
+    },
+    {
+      "id": "breed_094",
+      "cs": "Kangalský pastevecký pes",
+      "en": "Kangal Shepherd Dog",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Turecko",
+      "varieties": []
+    },
+    {
+      "id": "breed_095",
+      "cs": "Středoasijský pastevecký pes",
+      "en": "Central Asian Shepherd Dog",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Střední Asie",
+      "varieties": []
+    },
+    {
+      "id": "breed_096",
+      "cs": "Italský corso pes",
+      "en": "Cane Corso",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_097",
+      "cs": "Kanárská doga",
+      "en": "Dogo Canario",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_098",
+      "cs": "Tornjak",
+      "en": "Tornjak",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Bosna a Hercegovina",
+      "varieties": []
+    },
+    {
+      "id": "breed_099",
+      "cs": "Uruguayský cimarrón",
+      "en": "Cimarrón Uruguayo",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Uruguay",
+      "varieties": []
+    },
+    {
+      "id": "breed_100",
+      "cs": "Dánsko-švédský farmářský pes",
+      "en": "Danish-Swedish Farmdog",
+      "group": 2,
+      "section": "2.1",
+      "section_name": "Pinčové a knírači",
+      "country": "Dánsko/Švédsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_101",
+      "cs": "Krašský ovčák",
+      "en": "Karst Shepherd",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Slovinsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_102",
+      "cs": "Jihovýchodoevropský ovčák",
+      "en": "South-East European Shepherd",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Rumunsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_103",
+      "cs": "Kontinentální buldok",
+      "en": "Continental Bulldog",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Švýcarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_104",
+      "cs": "Transmontano mastif",
+      "en": "Transmontano Mastiff",
+      "group": 2,
+      "section": "2.2",
+      "section_name": "Molossoidní plemena",
+      "country": "Portugalsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_105",
+      "cs": "Kerry blue teriér",
+      "en": "Kerry Blue Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Irsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_106",
+      "cs": "Cairn teriér",
+      "en": "Cairn Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_107",
+      "cs": "Airedale teriér",
+      "en": "Airedale Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_108",
+      "cs": "Australský teriér",
+      "en": "Australian Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Austrálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_109",
+      "cs": "Bedlington teriér",
+      "en": "Bedlington Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_110",
+      "cs": "Border teriér",
+      "en": "Border Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_111",
+      "cs": "Bullteriér",
+      "en": "Bull Terrier",
+      "group": 3,
+      "section": "3.3",
+      "section_name": "Bullteriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_112",
+      "cs": "Miniaturní bullteriér",
+      "en": "Miniature Bull Terrier",
+      "group": 3,
+      "section": "3.3",
+      "section_name": "Bullteriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_113",
+      "cs": "Foxteriér hladkosrstý",
+      "en": "Smooth Fox Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_114",
+      "cs": "Foxteriér drsnosrstý",
+      "en": "Wire Fox Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_115",
+      "cs": "Anglický toy teriér",
+      "en": "English Toy Terrier",
+      "group": 3,
+      "section": "3.4",
+      "section_name": "Toy teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_116",
+      "cs": "Irish Soft Coated Wheaten Terrier",
+      "en": "Irish Soft Coated Wheaten Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Irsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_117",
+      "cs": "Lakelandský teriér",
+      "en": "Lakeland Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_118",
+      "cs": "Manchester teriér",
+      "en": "Manchester Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_119",
+      "cs": "Norwich teriér",
+      "en": "Norwich Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_120",
+      "cs": "Skotský teriér",
+      "en": "Scottish Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_121",
+      "cs": "Sealyham teriér",
+      "en": "Sealyham Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_122",
+      "cs": "Skye teriér",
+      "en": "Skye Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_123",
+      "cs": "Stafordšírský bullteriér",
+      "en": "Staffordshire Bull Terrier",
+      "group": 3,
+      "section": "3.3",
+      "section_name": "Bullteriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_124",
+      "cs": "Welsh teriér",
+      "en": "Welsh Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_125",
+      "cs": "West Highland White Terrier",
+      "en": "West Highland White Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_126",
+      "cs": "Yorkšírský teriér",
+      "en": "Yorkshire Terrier",
+      "group": 3,
+      "section": "3.4",
+      "section_name": "Toy teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_127",
+      "cs": "Německý lovecký teriér",
+      "en": "German Hunting Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_128",
+      "cs": "Irský teriér",
+      "en": "Irish Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Irsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_129",
+      "cs": "Dandie Dinmont teriér",
+      "en": "Dandie Dinmont Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_130",
+      "cs": "Australský silky teriér",
+      "en": "Australian Silky Terrier",
+      "group": 3,
+      "section": "3.4",
+      "section_name": "Toy teriéři",
+      "country": "Austrálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_131",
+      "cs": "Český teriér",
+      "en": "Cesky Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "ČR",
+      "varieties": []
+    },
+    {
+      "id": "breed_132",
+      "cs": "Japonský teriér",
+      "en": "Japanese Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_133",
+      "cs": "Norfolk teriér",
+      "en": "Norfolk Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_134",
+      "cs": "Americký stafordšírský teriér",
+      "en": "American Staffordshire Terrier",
+      "group": 3,
+      "section": "3.3",
+      "section_name": "Bullteriéři",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_135",
+      "cs": "Irish Glen of Imaal teriér",
+      "en": "Glen of Imaal Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Irsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_136",
+      "cs": "Parson Russell Terrier",
+      "en": "Parson Russell Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_137",
+      "cs": "Brazilský teriér",
+      "en": "Brazilian Terrier",
+      "group": 3,
+      "section": "3.1",
+      "section_name": "Velcí a střední teriéři",
+      "country": "Brazílie",
+      "varieties": []
+    },
+    {
+      "id": "breed_138",
+      "cs": "Jack Russell Terrier",
+      "en": "Jack Russell Terrier",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Velká Británie/Austrálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_139",
+      "cs": "Ratonero Valenciano",
+      "en": "Ratonero Valenciano",
+      "group": 3,
+      "section": "3.2",
+      "section_name": "Malí teriéři",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_140",
+      "cs": "Jezevčík standardní krátkosrstý",
+      "en": "Dachshund Standard Smooth",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": [
+        "standard",
+        "krátkosrstý"
+      ]
+    },
+    {
+      "id": "breed_141",
+      "cs": "Jezevčík standardní dlouhosrstý",
+      "en": "Dachshund Standard Long-haired",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": [
+        "standard",
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_142",
+      "cs": "Jezevčík standardní drsnosrstý",
+      "en": "Dachshund Standard Wire-haired",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": [
+        "standard",
+        "drsnosrstý"
+      ]
+    },
+    {
+      "id": "breed_143",
+      "cs": "Jezevčík trpasličí krátkosrstý",
+      "en": "Dachshund Miniature Smooth",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": [
+        "trpasličí",
+        "krátkosrstý"
+      ]
+    },
+    {
+      "id": "breed_144",
+      "cs": "Jezevčík trpasličí dlouhosrstý",
+      "en": "Dachshund Miniature Long-haired",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": [
+        "trpasličí",
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_145",
+      "cs": "Jezevčík trpasličí drsnosrstý",
+      "en": "Dachshund Miniature Wire-haired",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": [
+        "trpasličí",
+        "drsnosrstý"
+      ]
+    },
+    {
+      "id": "breed_146",
+      "cs": "Jezevčík králičí krátkosrstý",
+      "en": "Dachshund Rabbit Smooth",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": [
+        "králičí",
+        "krátkosrstý"
+      ]
+    },
+    {
+      "id": "breed_147",
+      "cs": "Jezevčík králičí dlouhosrstý",
+      "en": "Dachshund Rabbit Long-haired",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": [
+        "králičí",
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_148",
+      "cs": "Jezevčík králičí drsnosrstý",
+      "en": "Dachshund Rabbit Wire-haired",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": [
+        "králičí",
+        "drsnosrstý"
+      ]
+    },
+    {
+      "id": "breed_149",
+      "cs": "Taiwanský pes",
+      "en": "Taiwan Dog",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Tchaj-wan",
+      "varieties": []
+    },
+    {
+      "id": "breed_150",
+      "cs": "Vaestgoetlandský špic",
+      "en": "Vastgotaspets",
+      "group": 5,
+      "section": "5.3",
+      "section_name": "Severští hlídací a pastevečtí psi",
+      "country": "Švédsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_151",
+      "cs": "Jaemthund",
+      "en": "Jamthund",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Švédsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_152",
+      "cs": "Laponský pes",
+      "en": "Swedish Lapphund",
+      "group": 5,
+      "section": "5.3",
+      "section_name": "Severští hlídací a pastevečtí psi",
+      "country": "Švédsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_153",
+      "cs": "Basenji",
+      "en": "Basenji",
+      "group": 5,
+      "section": "5.6",
+      "section_name": "Primitivní plemena",
+      "country": "Kongo/Afrika",
+      "varieties": []
+    },
+    {
+      "id": "breed_154",
+      "cs": "Karelský medvědí pes",
+      "en": "Karelian Bear Dog",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Finsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_155",
+      "cs": "Finský špic",
+      "en": "Finnish Spitz",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Finsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_156",
+      "cs": "Ibizský podengo",
+      "en": "Ibizan Hound",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Španělsko",
+      "varieties": [
+        "krátkosrstý",
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_157",
+      "cs": "Portugalský podengo velký dlouhosrstý a hrubosrstý",
+      "en": "Portuguese Podengo Large Long-Wire",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Portugalsko",
+      "varieties": [
+        "velký",
+        "dlouhosrstý/hrubosrstý"
+      ]
+    },
+    {
+      "id": "breed_158",
+      "cs": "Portugalský podengo střední dlouhosrstý a hrubosrstý",
+      "en": "Portuguese Podengo Medium Long-Wire",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Portugalsko",
+      "varieties": [
+        "střední",
+        "dlouhosrstý/hrubosrstý"
+      ]
+    },
+    {
+      "id": "breed_159",
+      "cs": "Portugalský podengo malý dlouhosrstý a hrubosrstý",
+      "en": "Portuguese Podengo Small Long-Wire",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Portugalsko",
+      "varieties": [
+        "malý",
+        "dlouhosrstý/hrubosrstý"
+      ]
+    },
+    {
+      "id": "breed_160",
+      "cs": "Portugalský podengo velký hladkosrstý",
+      "en": "Portuguese Podengo Large Smooth",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Portugalsko",
+      "varieties": [
+        "velký",
+        "hladkosrstý"
+      ]
+    },
+    {
+      "id": "breed_161",
+      "cs": "Portugalský podengo střední hladkosrstý",
+      "en": "Portuguese Podengo Medium Smooth",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Portugalsko",
+      "varieties": [
+        "střední",
+        "hladkosrstý"
+      ]
+    },
+    {
+      "id": "breed_162",
+      "cs": "Portugalský podengo malý hladkosrstý",
+      "en": "Portuguese Podengo Small Smooth",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Portugalsko",
+      "varieties": [
+        "malý",
+        "hladkosrstý"
+      ]
+    },
+    {
+      "id": "breed_163",
+      "cs": "Německý špic vlčí (Keeshond)",
+      "en": "Keeshond",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "vlčí"
+      ]
+    },
+    {
+      "id": "breed_164",
+      "cs": "Německý špic velký bílý",
+      "en": "Großspitz weiß",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "velký",
+        "bílý"
+      ]
+    },
+    {
+      "id": "breed_165",
+      "cs": "Německý špic velký hnědý nebo černý",
+      "en": "Großspitz braun/schwarz",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "velký",
+        "hnědý/černý"
+      ]
+    },
+    {
+      "id": "breed_166",
+      "cs": "Německý špic střední bílý",
+      "en": "Mittelspitz weiß",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "střední",
+        "bílý"
+      ]
+    },
+    {
+      "id": "breed_167",
+      "cs": "Německý špic střední hnědý nebo černý",
+      "en": "Mittelspitz braun/schwarz",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "střední",
+        "hnědý/černý"
+      ]
+    },
+    {
+      "id": "breed_168",
+      "cs": "Německý špic střední oranžový a ostatní",
+      "en": "Mittelspitz orange",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "střední",
+        "oranžový/vlkošedý"
+      ]
+    },
+    {
+      "id": "breed_169",
+      "cs": "Německý špic malý bílý",
+      "en": "Kleinspitz weiß",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "malý",
+        "bílý"
+      ]
+    },
+    {
+      "id": "breed_170",
+      "cs": "Německý špic malý hnědý nebo černý",
+      "en": "Kleinspitz braun/schwarz",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "malý",
+        "hnědý/černý"
+      ]
+    },
+    {
+      "id": "breed_171",
+      "cs": "Německý špic malý oranžový a ostatní",
+      "en": "Kleinspitz orange",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "malý",
+        "oranžový/vlkošedý"
+      ]
+    },
+    {
+      "id": "breed_172",
+      "cs": "Německý špic trpasličí (Pomeranian)",
+      "en": "Pomeranian",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Německo",
+      "varieties": [
+        "trpasličí"
+      ]
+    },
+    {
+      "id": "breed_173",
+      "cs": "Čau-čau",
+      "en": "Chow Chow",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Čína",
+      "varieties": [
+        "krátkosrstý",
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_174",
+      "cs": "Lapinkoira (finský laponský pes)",
+      "en": "Finnish Lapphund",
+      "group": 5,
+      "section": "5.3",
+      "section_name": "Severští hlídací a pastevečtí psi",
+      "country": "Finsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_175",
+      "cs": "Italský volpino",
+      "en": "Volpino Italiano",
+      "group": 5,
+      "section": "5.4",
+      "section_name": "Evropští špicové",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_176",
+      "cs": "Sicilský chrt (Cirneco dell'Etna)",
+      "en": "Cirneco dell'Etna",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_177",
+      "cs": "Samojed",
+      "en": "Samoyed",
+      "group": 5,
+      "section": "5.1",
+      "section_name": "Severští saňoví psi",
+      "country": "Rusko",
+      "varieties": []
+    },
+    {
+      "id": "breed_178",
+      "cs": "Mexický naháč standard",
+      "en": "Xoloitzcuintle Standard",
+      "group": 5,
+      "section": "5.6",
+      "section_name": "Primitivní plemena",
+      "country": "Mexiko",
+      "varieties": [
+        "standard"
+      ]
+    },
+    {
+      "id": "breed_179",
+      "cs": "Mexický naháč střední",
+      "en": "Xoloitzcuintle Intermediate",
+      "group": 5,
+      "section": "5.6",
+      "section_name": "Primitivní plemena",
+      "country": "Mexiko",
+      "varieties": [
+        "střední"
+      ]
+    },
+    {
+      "id": "breed_180",
+      "cs": "Mexický naháč miniaturní",
+      "en": "Xoloitzcuintle Miniature",
+      "group": 5,
+      "section": "5.6",
+      "section_name": "Primitivní plemena",
+      "country": "Mexiko",
+      "varieties": [
+        "miniaturní"
+      ]
+    },
+    {
+      "id": "breed_181",
+      "cs": "Norský buhund",
+      "en": "Norwegian Buhund",
+      "group": 5,
+      "section": "5.3",
+      "section_name": "Severští hlídací a pastevečtí psi",
+      "country": "Norsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_182",
+      "cs": "Norský losí pes šedý",
+      "en": "Norwegian Elkhound",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Norsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_183",
+      "cs": "Aljašský malamut",
+      "en": "Alaskan Malamute",
+      "group": 5,
+      "section": "5.1",
+      "section_name": "Severští saňoví psi",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_184",
+      "cs": "Faraónský pes",
+      "en": "Pharaoh Hound",
+      "group": 5,
+      "section": "5.6",
+      "section_name": "Primitivní plemena",
+      "country": "Malta",
+      "varieties": []
+    },
+    {
+      "id": "breed_185",
+      "cs": "Akita-Inu",
+      "en": "Akita",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_186",
+      "cs": "Americká akita",
+      "en": "American Akita",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "USA/Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_187",
+      "cs": "Shiba-Inu",
+      "en": "Shiba",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_188",
+      "cs": "Hokkaido-Ken",
+      "en": "Hokkaido",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_189",
+      "cs": "Japonský špic",
+      "en": "Japanese Spitz",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_190",
+      "cs": "Norský lundehund",
+      "en": "Norwegian Lundehund",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Norsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_191",
+      "cs": "Norský losí pes černý",
+      "en": "Norwegian Elkhound Black",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Norsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_192",
+      "cs": "Sibiřský husky",
+      "en": "Siberian Husky",
+      "group": 5,
+      "section": "5.1",
+      "section_name": "Severští saňoví psi",
+      "country": "Rusko/USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_193",
+      "cs": "Canaanský pes",
+      "en": "Canaan Dog",
+      "group": 5,
+      "section": "5.6",
+      "section_name": "Primitivní plemena",
+      "country": "Izrael",
+      "varieties": []
+    },
+    {
+      "id": "breed_194",
+      "cs": "Grónský pes",
+      "en": "Greenland Dog",
+      "group": 5,
+      "section": "5.1",
+      "section_name": "Severští saňoví psi",
+      "country": "Grónsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_195",
+      "cs": "Norrbottenský špic",
+      "en": "Norrbottenspets",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Švédsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_196",
+      "cs": "Lapinporokoira",
+      "en": "Lapponian Herder",
+      "group": 5,
+      "section": "5.3",
+      "section_name": "Severští hlídací a pastevečtí psi",
+      "country": "Finsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_197",
+      "cs": "Islandský pes",
+      "en": "Icelandic Sheepdog",
+      "group": 5,
+      "section": "5.3",
+      "section_name": "Severští hlídací a pastevečtí psi",
+      "country": "Island",
+      "varieties": []
+    },
+    {
+      "id": "breed_198",
+      "cs": "Eurasier",
+      "en": "Eurasier",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_199",
+      "cs": "Ruskoevropská lajka",
+      "en": "Russian-European Laika",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Rusko",
+      "varieties": []
+    },
+    {
+      "id": "breed_200",
+      "cs": "Východosibiřská lajka",
+      "en": "East Siberian Laika",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Rusko",
+      "varieties": []
+    },
+    {
+      "id": "breed_201",
+      "cs": "Západosibiřská lajka",
+      "en": "West Siberian Laika",
+      "group": 5,
+      "section": "5.2",
+      "section_name": "Severští lovečtí psi",
+      "country": "Rusko",
+      "varieties": []
+    },
+    {
+      "id": "breed_202",
+      "cs": "Peruánský naháč velký",
+      "en": "Peruvian Inca Orchid Large",
+      "group": 5,
+      "section": "5.6",
+      "section_name": "Primitivní plemena",
+      "country": "Peru",
+      "varieties": [
+        "velký"
+      ]
+    },
+    {
+      "id": "breed_203",
+      "cs": "Peruánský naháč střední",
+      "en": "Peruvian Inca Orchid Medium",
+      "group": 5,
+      "section": "5.6",
+      "section_name": "Primitivní plemena",
+      "country": "Peru",
+      "varieties": [
+        "střední"
+      ]
+    },
+    {
+      "id": "breed_204",
+      "cs": "Peruánský naháč miniaturní",
+      "en": "Peruvian Inca Orchid Miniature",
+      "group": 5,
+      "section": "5.6",
+      "section_name": "Primitivní plemena",
+      "country": "Peru",
+      "varieties": [
+        "miniaturní"
+      ]
+    },
+    {
+      "id": "breed_205",
+      "cs": "Kai-Inu",
+      "en": "Kai Ken",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_206",
+      "cs": "Kishu-Inu",
+      "en": "Kishu Ken",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_207",
+      "cs": "Shikoku-Inu",
+      "en": "Shikoku Ken",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_208",
+      "cs": "Kanárský podenco",
+      "en": "Podenco Canario",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_209",
+      "cs": "Korejský Jindo Dog",
+      "en": "Korean Jindo Dog",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Korea",
+      "varieties": []
+    },
+    {
+      "id": "breed_210",
+      "cs": "Thajský ridgeback",
+      "en": "Thai Ridgeback",
+      "group": 5,
+      "section": "5.8",
+      "section_name": "Primitivní lovecká s hřebenem na hřbetu",
+      "country": "Thajsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_211",
+      "cs": "Thai Bangkaew Dog",
+      "en": "Thai Bangkaew Dog",
+      "group": 5,
+      "section": "5.5",
+      "section_name": "Asijští špicové",
+      "country": "Thajsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_212",
+      "cs": "Kintamani-Bali Dog",
+      "en": "Kintamani-Bali Dog",
+      "group": 5,
+      "section": "5.7",
+      "section_name": "Primitivní lovecká plemena",
+      "country": "Indonésie",
+      "varieties": []
+    },
+    {
+      "id": "breed_213",
+      "cs": "Jakutská lajka",
+      "en": "Yakutian Laika",
+      "group": 5,
+      "section": "5.1",
+      "section_name": "Severští saňoví psi",
+      "country": "Rusko",
+      "varieties": []
+    },
+    {
+      "id": "breed_214",
+      "cs": "Nivernaisský hrubosrstý honič",
+      "en": "Griffon Nivernais",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_215",
+      "cs": "Artoisský basset (Artésko-normandský)",
+      "en": "Basset Artésien Normand",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_216",
+      "cs": "Briquet Griffon Vendéen",
+      "en": "Briquet Griffon Vendéen",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_217",
+      "cs": "Ariégois",
+      "en": "Ariégeois",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_218",
+      "cs": "Velký modrý gaskoňský honič",
+      "en": "Grand Bleu de Gascogne",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_219",
+      "cs": "Harrier",
+      "en": "Harrier",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_220",
+      "cs": "Poitevin",
+      "en": "Poitevin",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_221",
+      "cs": "Billy",
+      "en": "Billy",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_222",
+      "cs": "Artoisský honič",
+      "en": "Chien d'Artois",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_223",
+      "cs": "Porcelaine",
+      "en": "Porcelaine",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_224",
+      "cs": "Malý modrý gaskoňský honič",
+      "en": "Petit Bleu de Gascogne",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_225",
+      "cs": "Hrubosrstý modrý gaskoňský honič",
+      "en": "Griffon Bleu de Gascogne",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_226",
+      "cs": "Velký hrubosrstý vendéeský basset",
+      "en": "Grand Basset Griffon Vendéen",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_227",
+      "cs": "Modrý gaskoňský basset",
+      "en": "Basset Bleu de Gascogne",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_228",
+      "cs": "Plavý bretaňský basset",
+      "en": "Basset Fauve de Bretagne",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_229",
+      "cs": "Gaskoňsko-saintongeoiský honič",
+      "en": "Grand Gascon Saintongeois",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_230",
+      "cs": "Finský honič",
+      "en": "Finnish Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Finsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_231",
+      "cs": "Polský brakýř",
+      "en": "Ogar Polski",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Polsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_232",
+      "cs": "Švýcarský honič bernský",
+      "en": "Bernese Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švýcarsko",
+      "varieties": [
+        "bernský"
+      ]
+    },
+    {
+      "id": "breed_233",
+      "cs": "Švýcarský honič jurský",
+      "en": "Jura Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švýcarsko",
+      "varieties": [
+        "jurský"
+      ]
+    },
+    {
+      "id": "breed_234",
+      "cs": "Švýcarský honič lucernský",
+      "en": "Lucernese Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švýcarsko",
+      "varieties": [
+        "lucernský"
+      ]
+    },
+    {
+      "id": "breed_235",
+      "cs": "Švýcarský honič švycký",
+      "en": "Schwyz Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švýcarsko",
+      "varieties": [
+        "švycký"
+      ]
+    },
+    {
+      "id": "breed_236",
+      "cs": "Švýcarský nízkonohý honič bernský",
+      "en": "Small Bernese Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švýcarsko",
+      "varieties": [
+        "bernský",
+        "nízkonohý"
+      ]
+    },
+    {
+      "id": "breed_237",
+      "cs": "Švýcarský nízkonohý honič jurský",
+      "en": "Small Jura Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švýcarsko",
+      "varieties": [
+        "jurský",
+        "nízkonohý"
+      ]
+    },
+    {
+      "id": "breed_238",
+      "cs": "Švýcarský nízkonohý honič lucernský",
+      "en": "Small Lucernese Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švýcarsko",
+      "varieties": [
+        "lucernský",
+        "nízkonohý"
+      ]
+    },
+    {
+      "id": "breed_239",
+      "cs": "Švýcarský nízkonohý honič švycký",
+      "en": "Small Schwyz Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švýcarsko",
+      "varieties": [
+        "švycký",
+        "nízkonohý"
+      ]
+    },
+    {
+      "id": "breed_240",
+      "cs": "Štýrský brakýř",
+      "en": "Styrian Coarse-haired Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Rakousko",
+      "varieties": []
+    },
+    {
+      "id": "breed_241",
+      "cs": "Rakouský krátkosrstý honič (Brandlbracke)",
+      "en": "Austrian Black and Tan Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Rakousko",
+      "varieties": []
+    },
+    {
+      "id": "breed_242",
+      "cs": "Plavý bretaňský honič",
+      "en": "Griffon Fauve de Bretagne",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_243",
+      "cs": "Malý hrubosrstý vendéeský basset",
+      "en": "Petit Basset Griffon Vendéen",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_244",
+      "cs": "Tyrolský honič",
+      "en": "Tyrolean Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Rakousko",
+      "varieties": []
+    },
+    {
+      "id": "breed_245",
+      "cs": "Bloodhound (Chien de Saint Hubert)",
+      "en": "Bloodhound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_246",
+      "cs": "Westfálský jezevčíkovitý honič",
+      "en": "Westphalian Dachsbracke",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_247",
+      "cs": "Smalandský honič",
+      "en": "Smaland Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švédsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_248",
+      "cs": "Drever",
+      "en": "Drever",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švédsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_249",
+      "cs": "Schillerův honič",
+      "en": "Schiller Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švédsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_250",
+      "cs": "Hamiltonův honič",
+      "en": "Hamiltonstovare",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Švédsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_251",
+      "cs": "Rhodéský ridgeback",
+      "en": "Rhodesian Ridgeback",
+      "group": 6,
+      "section": "6.3",
+      "section_name": "Příbuzná plemena",
+      "country": "Jižní Afrika",
+      "varieties": []
+    },
+    {
+      "id": "breed_252",
+      "cs": "Srbský honič",
+      "en": "Serbian Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Srbsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_253",
+      "cs": "Srbský tříbarevný honič",
+      "en": "Serbian Tricolour Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Srbsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_254",
+      "cs": "Istrijský krátkosrstý honič",
+      "en": "Istrian Short-haired Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Chorvatsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_255",
+      "cs": "Istrijský hrubosrstý honič",
+      "en": "Istrian Wire-haired Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Chorvatsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_256",
+      "cs": "Dalmatin",
+      "en": "Dalmatian",
+      "group": 6,
+      "section": "6.3",
+      "section_name": "Příbuzná plemena",
+      "country": "Chorvatsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_257",
+      "cs": "Posávský honič",
+      "en": "Posavac Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Chorvatsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_258",
+      "cs": "Bosenský hrubosrstý honič (Barak)",
+      "en": "Bosnian Coarse-haired Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Bosna a Hercegovina",
+      "varieties": []
+    },
+    {
+      "id": "breed_259",
+      "cs": "Foxhound (anglický)",
+      "en": "English Foxhound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_260",
+      "cs": "Bígl",
+      "en": "Beagle",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_261",
+      "cs": "Basset Hound",
+      "en": "Basset Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_262",
+      "cs": "Italský Segugio hladkosrstý",
+      "en": "Segugio Italiano a pelo raso",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Itálie",
+      "varieties": [
+        "hladkosrstý"
+      ]
+    },
+    {
+      "id": "breed_263",
+      "cs": "Italský Segugio hrubosrstý",
+      "en": "Segugio Italiano a pelo forte",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Itálie",
+      "varieties": [
+        "hrubosrstý"
+      ]
+    },
+    {
+      "id": "breed_264",
+      "cs": "Dunker",
+      "en": "Dunker",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Norsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_265",
+      "cs": "Španělský sabueso",
+      "en": "Spanish Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_266",
+      "cs": "Hannoverský barvář",
+      "en": "Hanoverian Scenthound",
+      "group": 6,
+      "section": "6.2",
+      "section_name": "Barváři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_267",
+      "cs": "Řecký honič",
+      "en": "Hellenic Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Řecko",
+      "varieties": []
+    },
+    {
+      "id": "breed_268",
+      "cs": "Bavorský barvář",
+      "en": "Bavarian Mountain Scenthound",
+      "group": 6,
+      "section": "6.2",
+      "section_name": "Barváři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_269",
+      "cs": "Sedmihradský honič",
+      "en": "Transylvanian Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Maďarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_270",
+      "cs": "Slovenský kopov",
+      "en": "Slovak Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Slovensko",
+      "varieties": []
+    },
+    {
+      "id": "breed_271",
+      "cs": "Alpský brakýř jezevčíkovitý",
+      "en": "Alpine Dachsbracke",
+      "group": 6,
+      "section": "6.2",
+      "section_name": "Barváři",
+      "country": "Rakousko",
+      "varieties": []
+    },
+    {
+      "id": "breed_272",
+      "cs": "Hygenův honič",
+      "en": "Hygenhund",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Norsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_273",
+      "cs": "Haldenův honič",
+      "en": "Halden Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Norsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_274",
+      "cs": "Jugoslávský planinský honič",
+      "en": "Montenegrin Mountain Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Černá Hora",
+      "varieties": []
+    },
+    {
+      "id": "breed_275",
+      "cs": "Velký vendéeský hrubosrstý honič",
+      "en": "Grand Griffon Vendéen",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_276",
+      "cs": "Otterhound",
+      "en": "Otterhound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_277",
+      "cs": "Německý honič",
+      "en": "German Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_278",
+      "cs": "Black and Tan Coonhound",
+      "en": "Black and Tan Coonhound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_279",
+      "cs": "Francouzský tříbarevný honič",
+      "en": "Français Tricolore",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_280",
+      "cs": "Francouzský bílo-černý honič",
+      "en": "Français Blanc et Noir",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_281",
+      "cs": "Americký foxhound",
+      "en": "American Foxhound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_282",
+      "cs": "Francouzský bílo-oranžový honič",
+      "en": "Français Blanc et Orange",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_283",
+      "cs": "Velký francouzsko-anglický trikolorní honič",
+      "en": "Grand Anglo-Français Tricolore",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_284",
+      "cs": "Velký francouzsko-anglický bílo-černý honič",
+      "en": "Grand Anglo-Français Blanc et Noir",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_285",
+      "cs": "Velký francouzsko-anglický bílo-oranžový honič",
+      "en": "Grand Anglo-Français Blanc et Orange",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_286",
+      "cs": "Anglo-francouzský honič de Petite Venerie",
+      "en": "Anglo-Français de Petite Vénerie",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_287",
+      "cs": "Polský honič (Gonczy Polski)",
+      "en": "Polish Hunting Dog",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Polsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_288",
+      "cs": "Estonský honič",
+      "en": "Estonian Hound",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Estonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_289",
+      "cs": "Maremmanský honič",
+      "en": "Segugio Maremmano",
+      "group": 6,
+      "section": "6.1",
+      "section_name": "Honiči",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_290",
+      "cs": "Pointer (anglický)",
+      "en": "English Pointer",
+      "group": 7,
+      "section": "7.2",
+      "section_name": "Britští a irští ohaři a setři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_291",
+      "cs": "Anglický setr",
+      "en": "English Setter",
+      "group": 7,
+      "section": "7.2",
+      "section_name": "Britští a irští ohaři a setři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_292",
+      "cs": "Gordonsetr",
+      "en": "Gordon Setter",
+      "group": 7,
+      "section": "7.2",
+      "section_name": "Britští a irští ohaři a setři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_293",
+      "cs": "Maďarský ohař krátkosrstý (Vizsla)",
+      "en": "Hungarian Vizsla Short-haired",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Maďarsko",
+      "varieties": [
+        "krátkosrstý"
+      ]
+    },
+    {
+      "id": "breed_294",
+      "cs": "Burgoský perdiquero",
+      "en": "Burgos Pointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_295",
+      "cs": "Bretaňský ohař (Epagneul Breton)",
+      "en": "Brittany",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_296",
+      "cs": "Německý ohař drátosrstý",
+      "en": "German Wirehaired Pointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_297",
+      "cs": "Výmarský ohař krátkosrstý",
+      "en": "Weimaraner Short-haired",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Německo",
+      "varieties": [
+        "krátkosrstý"
+      ]
+    },
+    {
+      "id": "breed_298",
+      "cs": "Výmarský ohař dlouhosrstý",
+      "en": "Weimaraner Long-haired",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Německo",
+      "varieties": [
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_299",
+      "cs": "Malý münsterlandský ohař",
+      "en": "Small Münsterländer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_300",
+      "cs": "Modrý pikardský ohař dlouhosrstý",
+      "en": "Epagneul Bleu de Picardie",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_301",
+      "cs": "Griffon d'Arrêt à Poil Dur (Korthals)",
+      "en": "Wirehaired Pointing Griffon",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie/Nizozemsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_302",
+      "cs": "Pikardský ohař dlouhosrstý",
+      "en": "Picardy Spaniel",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_303",
+      "cs": "Dlouhosrstý ohař z Pont-Audemer",
+      "en": "Pont-Audemer Spaniel",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_304",
+      "cs": "Saint-Germainský ohař krátkosrstý",
+      "en": "Saint-Germain Pointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_305",
+      "cs": "Německý ohař dlouhosrstý",
+      "en": "German Longhaired Pointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_306",
+      "cs": "Velký münsterlandský ohař",
+      "en": "Large Münsterländer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_307",
+      "cs": "Německý ohař krátkosrstý",
+      "en": "German Shorthaired Pointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_308",
+      "cs": "Irský setr (červený)",
+      "en": "Irish Setter",
+      "group": 7,
+      "section": "7.2",
+      "section_name": "Britští a irští ohaři a setři",
+      "country": "Irsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_309",
+      "cs": "Francouzský ohař krátkosrstý gaskoňský",
+      "en": "French Pointing Dog Gascogne type",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_310",
+      "cs": "Francouzský ohař krátkosrstý pyrenejský",
+      "en": "French Pointing Dog Pyrenees type",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_311",
+      "cs": "Italský spinone",
+      "en": "Spinone Italiano",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_312",
+      "cs": "Italský ohař (Bracco Italiano)",
+      "en": "Bracco Italiano",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_313",
+      "cs": "Francouzský ohař dlouhosrstý",
+      "en": "French Spaniel",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_314",
+      "cs": "Ariegský ohař krátkosrstý",
+      "en": "Ariege Pointing Dog",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_315",
+      "cs": "Bourbonský ohař krátkosrstý",
+      "en": "Bourbonnais Pointing Dog",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_316",
+      "cs": "Auvergneský ohař krátkosrstý",
+      "en": "Auvergne Pointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_317",
+      "cs": "Portugalský ohař",
+      "en": "Portuguese Pointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Portugalsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_318",
+      "cs": "Pudlpointr",
+      "en": "Pudelpointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_319",
+      "cs": "Frízský ohař (Stabyhoun)",
+      "en": "Stabyhoun",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Nizozemsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_320",
+      "cs": "Drentsche Patrijshond",
+      "en": "Drentsche Patrijshond",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Nizozemsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_321",
+      "cs": "Německý ohař ostnosrstý",
+      "en": "German Roughhaired Pointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_322",
+      "cs": "Maďarský ohař drátosrstý",
+      "en": "Hungarian Vizsla Wire-haired",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Maďarsko",
+      "varieties": [
+        "drátosrstý"
+      ]
+    },
+    {
+      "id": "breed_323",
+      "cs": "Český fousek",
+      "en": "Cesky Fousek",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "ČR",
+      "varieties": []
+    },
+    {
+      "id": "breed_324",
+      "cs": "Dánský ohař krátkosrstý",
+      "en": "Old Danish Pointing Dog",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Dánsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_325",
+      "cs": "Slovenský ohař hrubosrstý",
+      "en": "Slovakian Wirehaired Pointer",
+      "group": 7,
+      "section": "7.1",
+      "section_name": "Kontinentální ohaři",
+      "country": "Slovensko",
+      "varieties": []
+    },
+    {
+      "id": "breed_326",
+      "cs": "Irský červenobílý setr",
+      "en": "Irish Red and White Setter",
+      "group": 7,
+      "section": "7.2",
+      "section_name": "Britští a irští ohaři a setři",
+      "country": "Irsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_327",
+      "cs": "Anglický kokršpaněl",
+      "en": "English Cocker Spaniel",
+      "group": 8,
+      "section": "8.2",
+      "section_name": "Slídiči",
+      "country": "Velká Británie",
+      "varieties": [
+        "ostatní jednobarevní",
+        "černá / černá s pálením",
+        "vícebarevní"
+      ]
+    },
+    {
+      "id": "breed_328",
+      "cs": "Portugalský vodní pes",
+      "en": "Portuguese Water Dog",
+      "group": 8,
+      "section": "8.3",
+      "section_name": "Vodní psi",
+      "country": "Portugalsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_329",
+      "cs": "Německý křepelák",
+      "en": "German Spaniel",
+      "group": 8,
+      "section": "8.2",
+      "section_name": "Slídiči",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_330",
+      "cs": "Barbet",
+      "en": "Barbet",
+      "group": 8,
+      "section": "8.3",
+      "section_name": "Vodní psi",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_331",
+      "cs": "Clumber španěl",
+      "en": "Clumber Spaniel",
+      "group": 8,
+      "section": "8.2",
+      "section_name": "Slídiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_332",
+      "cs": "Curly Coated Retriever",
+      "en": "Curly Coated Retriever",
+      "group": 8,
+      "section": "8.1",
+      "section_name": "Retrívři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_333",
+      "cs": "Zlatý retrívr",
+      "en": "Golden Retriever",
+      "group": 8,
+      "section": "8.1",
+      "section_name": "Retrívři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_334",
+      "cs": "Flat Coated Retriever",
+      "en": "Flat Coated Retriever",
+      "group": 8,
+      "section": "8.1",
+      "section_name": "Retrívři",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_335",
+      "cs": "Labradorský retrívr",
+      "en": "Labrador Retriever",
+      "group": 8,
+      "section": "8.1",
+      "section_name": "Retrívři",
+      "country": "Velká Británie/Kanada",
+      "varieties": []
+    },
+    {
+      "id": "breed_336",
+      "cs": "Field španěl",
+      "en": "Field Spaniel",
+      "group": 8,
+      "section": "8.2",
+      "section_name": "Slídiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_337",
+      "cs": "Irský vodní španěl",
+      "en": "Irish Water Spaniel",
+      "group": 8,
+      "section": "8.3",
+      "section_name": "Vodní psi",
+      "country": "Irsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_338",
+      "cs": "Anglický špringršpaněl",
+      "en": "English Springer Spaniel",
+      "group": 8,
+      "section": "8.2",
+      "section_name": "Slídiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_339",
+      "cs": "Welššpringršpaněl",
+      "en": "Welsh Springer Spaniel",
+      "group": 8,
+      "section": "8.2",
+      "section_name": "Slídiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_340",
+      "cs": "Sussex španěl",
+      "en": "Sussex Spaniel",
+      "group": 8,
+      "section": "8.2",
+      "section_name": "Slídiči",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_341",
+      "cs": "Americký kokršpaněl",
+      "en": "American Cocker Spaniel",
+      "group": 8,
+      "section": "8.2",
+      "section_name": "Slídiči",
+      "country": "USA",
+      "varieties": [
+        "černá / černá s pálením",
+        "ostatní jednobarevní",
+        "vícebarevní"
+      ]
+    },
+    {
+      "id": "breed_342",
+      "cs": "Lagotto Romagnolo",
+      "en": "Lagotto Romagnolo",
+      "group": 8,
+      "section": "8.3",
+      "section_name": "Vodní psi",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_343",
+      "cs": "Wetterhound",
+      "en": "Wetterhound",
+      "group": 8,
+      "section": "8.3",
+      "section_name": "Vodní psi",
+      "country": "Nizozemsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_344",
+      "cs": "Chesapeake Bay Retriever",
+      "en": "Chesapeake Bay Retriever",
+      "group": 8,
+      "section": "8.1",
+      "section_name": "Retrívři",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_345",
+      "cs": "Americký vodní španěl",
+      "en": "American Water Spaniel",
+      "group": 8,
+      "section": "8.3",
+      "section_name": "Vodní psi",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_346",
+      "cs": "Nova Scotia Duck Tolling Retriever",
+      "en": "Nova Scotia Duck Tolling Retriever",
+      "group": 8,
+      "section": "8.1",
+      "section_name": "Retrívři",
+      "country": "Kanada",
+      "varieties": []
+    },
+    {
+      "id": "breed_347",
+      "cs": "Kooikerhondje",
+      "en": "Kooikerhondje",
+      "group": 8,
+      "section": "8.2",
+      "section_name": "Slídiči",
+      "country": "Nizozemsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_348",
+      "cs": "Španělský vodní pes",
+      "en": "Spanish Water Dog",
+      "group": 8,
+      "section": "8.3",
+      "section_name": "Vodní psi",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_349",
+      "cs": "Maltézský psík",
+      "en": "Maltese",
+      "group": 9,
+      "section": "9.1",
+      "section_name": "Bišonci a podobní",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_350",
+      "cs": "Papillon",
+      "en": "Papillon",
+      "group": 9,
+      "section": "9.9",
+      "section_name": "Kontinentální toy španěl a ruský toy",
+      "country": "Francie/Belgie",
+      "varieties": [
+        "papillon"
+      ]
+    },
+    {
+      "id": "breed_351",
+      "cs": "Phalène",
+      "en": "Phalène",
+      "group": 9,
+      "section": "9.9",
+      "section_name": "Kontinentální toy španěl a ruský toy",
+      "country": "Francie/Belgie",
+      "varieties": [
+        "phalène"
+      ]
+    },
+    {
+      "id": "breed_352",
+      "cs": "Bruselský grifonek",
+      "en": "Brussels Griffon",
+      "group": 9,
+      "section": "9.3",
+      "section_name": "Malí belgičtí psi",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_353",
+      "cs": "Belgický grifonek",
+      "en": "Belgian Griffon",
+      "group": 9,
+      "section": "9.3",
+      "section_name": "Malí belgičtí psi",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_354",
+      "cs": "Brabantík (Petit Brabançon)",
+      "en": "Petit Brabançon",
+      "group": 9,
+      "section": "9.3",
+      "section_name": "Malí belgičtí psi",
+      "country": "Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_355",
+      "cs": "Francouzský buldoček",
+      "en": "French Bulldog",
+      "group": 9,
+      "section": "9.11",
+      "section_name": "Malý molossoid",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_356",
+      "cs": "King Charles španěl",
+      "en": "King Charles Spaniel",
+      "group": 9,
+      "section": "9.7",
+      "section_name": "Angličtí toy španělé",
+      "country": "Velká Británie",
+      "varieties": [
+        "černá s pálením",
+        "červená",
+        "blenheim",
+        "trikolor"
+      ]
+    },
+    {
+      "id": "breed_357",
+      "cs": "Kavalír King Charles španěl",
+      "en": "Cavalier King Charles Spaniel",
+      "group": 9,
+      "section": "9.7",
+      "section_name": "Angličtí toy španělé",
+      "country": "Velká Británie",
+      "varieties": [
+        "černá s pálením",
+        "červená",
+        "blenheim",
+        "trikolor"
+      ]
+    },
+    {
+      "id": "breed_358",
+      "cs": "Bostonský teriér",
+      "en": "Boston Terrier",
+      "group": 9,
+      "section": "9.11",
+      "section_name": "Malý molossoid",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_359",
+      "cs": "Pudl velký",
+      "en": "Standard Poodle",
+      "group": 9,
+      "section": "9.2",
+      "section_name": "Pudl",
+      "country": "Francie",
+      "varieties": [
+        "velký",
+        "bílý/černý/hnědý/stříbrný/červený/aprikot"
+      ]
+    },
+    {
+      "id": "breed_360",
+      "cs": "Pudl střední",
+      "en": "Medium Poodle",
+      "group": 9,
+      "section": "9.2",
+      "section_name": "Pudl",
+      "country": "Francie",
+      "varieties": [
+        "střední",
+        "bílý/černý/hnědý/stříbrný/červený/aprikot"
+      ]
+    },
+    {
+      "id": "breed_361",
+      "cs": "Pudl trpasličí",
+      "en": "Miniature Poodle",
+      "group": 9,
+      "section": "9.2",
+      "section_name": "Pudl",
+      "country": "Francie",
+      "varieties": [
+        "trpasličí",
+        "bílý/černý/hnědý/stříbrný/červený/aprikot"
+      ]
+    },
+    {
+      "id": "breed_362",
+      "cs": "Pudl toy",
+      "en": "Toy Poodle",
+      "group": 9,
+      "section": "9.2",
+      "section_name": "Pudl",
+      "country": "Francie",
+      "varieties": [
+        "toy",
+        "bílý/černý/hnědý/stříbrný/červený/aprikot"
+      ]
+    },
+    {
+      "id": "breed_363",
+      "cs": "Kromfohrländer",
+      "en": "Kromfohrländer",
+      "group": 9,
+      "section": "9.10",
+      "section_name": "Kromfohrländer",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_364",
+      "cs": "Boloňský psík (Bolognese)",
+      "en": "Bolognese",
+      "group": 9,
+      "section": "9.1",
+      "section_name": "Bišonci a podobní",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_365",
+      "cs": "Japan-chin",
+      "en": "Japanese Chin",
+      "group": 9,
+      "section": "9.8",
+      "section_name": "Japan-chin a pekingský psík",
+      "country": "Japonsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_366",
+      "cs": "Pekingský palácový psík",
+      "en": "Pekingese",
+      "group": 9,
+      "section": "9.8",
+      "section_name": "Japan-chin a pekingský psík",
+      "country": "Čína",
+      "varieties": []
+    },
+    {
+      "id": "breed_367",
+      "cs": "Shih-tzu",
+      "en": "Shih Tzu",
+      "group": 9,
+      "section": "9.5",
+      "section_name": "Tibetská plemena",
+      "country": "Tibet/Čína",
+      "varieties": []
+    },
+    {
+      "id": "breed_368",
+      "cs": "Tibetský teriér",
+      "en": "Tibetan Terrier",
+      "group": 9,
+      "section": "9.5",
+      "section_name": "Tibetská plemena",
+      "country": "Tibet",
+      "varieties": []
+    },
+    {
+      "id": "breed_369",
+      "cs": "Bišonek",
+      "en": "Bichon Frisé",
+      "group": 9,
+      "section": "9.1",
+      "section_name": "Bišonci a podobní",
+      "country": "Francie/Belgie",
+      "varieties": []
+    },
+    {
+      "id": "breed_370",
+      "cs": "Čivava krátkosrstá",
+      "en": "Chihuahua Short Coat",
+      "group": 9,
+      "section": "9.6",
+      "section_name": "Čivava",
+      "country": "Mexiko",
+      "varieties": [
+        "krátkosrstá"
+      ]
+    },
+    {
+      "id": "breed_371",
+      "cs": "Čivava dlouhosrstá",
+      "en": "Chihuahua Long Coat",
+      "group": 9,
+      "section": "9.6",
+      "section_name": "Čivava",
+      "country": "Mexiko",
+      "varieties": [
+        "dlouhosrstá"
+      ]
+    },
+    {
+      "id": "breed_372",
+      "cs": "Lhasa Apso",
+      "en": "Lhasa Apso",
+      "group": 9,
+      "section": "9.5",
+      "section_name": "Tibetská plemena",
+      "country": "Tibet",
+      "varieties": []
+    },
+    {
+      "id": "breed_373",
+      "cs": "Tibetský španěl",
+      "en": "Tibetan Spaniel",
+      "group": 9,
+      "section": "9.5",
+      "section_name": "Tibetská plemena",
+      "country": "Tibet",
+      "varieties": []
+    },
+    {
+      "id": "breed_374",
+      "cs": "Lvíček (Petit Chien Lion)",
+      "en": "Löwchen",
+      "group": 9,
+      "section": "9.1",
+      "section_name": "Bišonci a podobní",
+      "country": "Francie",
+      "varieties": []
+    },
+    {
+      "id": "breed_375",
+      "cs": "Havanský psík",
+      "en": "Havanese",
+      "group": 9,
+      "section": "9.1",
+      "section_name": "Bišonci a podobní",
+      "country": "Kuba",
+      "varieties": []
+    },
+    {
+      "id": "breed_376",
+      "cs": "Mops",
+      "en": "Pug",
+      "group": 9,
+      "section": "9.11",
+      "section_name": "Malý molossoid",
+      "country": "Čína",
+      "varieties": [
+        "béžová/stříbrná/aprikot",
+        "černá"
+      ]
+    },
+    {
+      "id": "breed_377",
+      "cs": "Coton de Tuléar",
+      "en": "Coton de Tuléar",
+      "group": 9,
+      "section": "9.1",
+      "section_name": "Bišonci a podobní",
+      "country": "Madagaskar",
+      "varieties": []
+    },
+    {
+      "id": "breed_378",
+      "cs": "Čínský chocholatý pes bez srsti",
+      "en": "Chinese Crested Dog Hairless",
+      "group": 9,
+      "section": "9.4",
+      "section_name": "Naháči",
+      "country": "Čína",
+      "varieties": [
+        "bez srsti"
+      ]
+    },
+    {
+      "id": "breed_379",
+      "cs": "Čínský chocholatý pes (labutěnka)",
+      "en": "Chinese Crested Dog Powderpuff",
+      "group": 9,
+      "section": "9.4",
+      "section_name": "Naháči",
+      "country": "Čína",
+      "varieties": [
+        "labutěnka"
+      ]
+    },
+    {
+      "id": "breed_380",
+      "cs": "Ruský toy hladkosrstý",
+      "en": "Russian Toy Smooth",
+      "group": 9,
+      "section": "9.9",
+      "section_name": "Kontinentální toy španěl a ruský toy",
+      "country": "Rusko",
+      "varieties": [
+        "hladkosrstý"
+      ]
+    },
+    {
+      "id": "breed_381",
+      "cs": "Ruský toy dlouhosrstý",
+      "en": "Russian Toy Long-haired",
+      "group": 9,
+      "section": "9.9",
+      "section_name": "Kontinentální toy španěl a ruský toy",
+      "country": "Rusko",
+      "varieties": [
+        "dlouhosrstý"
+      ]
+    },
+    {
+      "id": "breed_382",
+      "cs": "Anglický chrt (Greyhound)",
+      "en": "Greyhound",
+      "group": 10,
+      "section": "10.3",
+      "section_name": "Krátkosrstí chrti",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_383",
+      "cs": "Irský vlkodav",
+      "en": "Irish Wolfhound",
+      "group": 10,
+      "section": "10.2",
+      "section_name": "Drsnosrstí chrti",
+      "country": "Irsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_384",
+      "cs": "Whippet",
+      "en": "Whippet",
+      "group": 10,
+      "section": "10.3",
+      "section_name": "Krátkosrstí chrti",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_385",
+      "cs": "Deerhound (Skotský jelení pes)",
+      "en": "Deerhound",
+      "group": 10,
+      "section": "10.2",
+      "section_name": "Drsnosrstí chrti",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_386",
+      "cs": "Sloughi",
+      "en": "Sloughi",
+      "group": 10,
+      "section": "10.3",
+      "section_name": "Krátkosrstí chrti",
+      "country": "Maroko",
+      "varieties": []
+    },
+    {
+      "id": "breed_387",
+      "cs": "Barzoj (ruský chrt)",
+      "en": "Borzoi",
+      "group": 10,
+      "section": "10.1",
+      "section_name": "Dlouhosrstí nebo třásňatí chrti",
+      "country": "Rusko",
+      "varieties": []
+    },
+    {
+      "id": "breed_388",
+      "cs": "Italský chrtík",
+      "en": "Italian Greyhound",
+      "group": 10,
+      "section": "10.3",
+      "section_name": "Krátkosrstí chrti",
+      "country": "Itálie",
+      "varieties": []
+    },
+    {
+      "id": "breed_389",
+      "cs": "Afgánský chrt",
+      "en": "Afghan Hound",
+      "group": 10,
+      "section": "10.1",
+      "section_name": "Dlouhosrstí nebo třásňatí chrti",
+      "country": "Afghánistán",
+      "varieties": []
+    },
+    {
+      "id": "breed_390",
+      "cs": "Maďarský chrt",
+      "en": "Magyar Agar",
+      "group": 10,
+      "section": "10.3",
+      "section_name": "Krátkosrstí chrti",
+      "country": "Maďarsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_391",
+      "cs": "Pražský krysařík",
+      "en": "Prague Ratter",
+      "group": 9,
+      "section": "9.11",
+      "section_name": "Malý molossoid",
+      "country": "ČR",
+      "varieties": []
+    },
+    {
+      "id": "breed_392",
+      "cs": "Saluki (perský chrt) s třásněmi",
+      "en": "Saluki Feathered",
+      "group": 10,
+      "section": "10.1",
+      "section_name": "Dlouhosrstí nebo třásňatí chrti",
+      "country": "Střední východ",
+      "varieties": [
+        "s třásněmi"
+      ]
+    },
+    {
+      "id": "breed_393",
+      "cs": "Saluki (perský chrt) krátkosrstý",
+      "en": "Saluki Smooth",
+      "group": 10,
+      "section": "10.1",
+      "section_name": "Dlouhosrstí nebo třásňatí chrti",
+      "country": "Střední východ",
+      "varieties": [
+        "krátkosrstý"
+      ]
+    },
+    {
+      "id": "breed_394",
+      "cs": "Španělský galgo",
+      "en": "Spanish Galgo",
+      "group": 10,
+      "section": "10.3",
+      "section_name": "Krátkosrstí chrti",
+      "country": "Španělsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_395",
+      "cs": "Azavak",
+      "en": "Azawakh",
+      "group": 10,
+      "section": "10.3",
+      "section_name": "Krátkosrstí chrti",
+      "country": "Mali/Niger",
+      "varieties": []
+    },
+    {
+      "id": "breed_396",
+      "cs": "Polský chrt",
+      "en": "Polish Greyhound",
+      "group": 10,
+      "section": "10.3",
+      "section_name": "Krátkosrstí chrti",
+      "country": "Polsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_397",
+      "cs": "Americký pitbulteriér",
+      "en": "American Pit Bull Terrier",
+      "group": 11,
+      "section": "11.1",
+      "section_name": "Buldoci a bull teriéři (non-FCI)",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_398",
+      "cs": "American Bully",
+      "en": "American Bully",
+      "group": 11,
+      "section": "11.1",
+      "section_name": "Buldoci a bull teriéři (non-FCI)",
+      "country": "USA",
+      "varieties": [
+        "Standard",
+        "Pocket",
+        "Classic",
+        "XL"
+      ]
+    },
+    {
+      "id": "breed_399",
+      "cs": "Americký buldok",
+      "en": "American Bulldog",
+      "group": 11,
+      "section": "11.1",
+      "section_name": "Buldoci a bull teriéři (non-FCI)",
+      "country": "USA",
+      "varieties": [
+        "Standard (Scott)",
+        "Bully (Johnson)"
+      ]
+    },
+    {
+      "id": "breed_400",
+      "cs": "Olde English Bulldogge",
+      "en": "Olde English Bulldogge",
+      "group": 11,
+      "section": "11.1",
+      "section_name": "Buldoci a bull teriéři (non-FCI)",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_401",
+      "cs": "Treeing Walker Coonhound",
+      "en": "Treeing Walker Coonhound",
+      "group": 11,
+      "section": "11.2",
+      "section_name": "Američtí honiči a curs",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_402",
+      "cs": "Bluetick Coonhound",
+      "en": "Bluetick Coonhound",
+      "group": 11,
+      "section": "11.2",
+      "section_name": "Američtí honiči a curs",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_403",
+      "cs": "Redbone Coonhound",
+      "en": "Redbone Coonhound",
+      "group": 11,
+      "section": "11.2",
+      "section_name": "Američtí honiči a curs",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_404",
+      "cs": "Plottský pes",
+      "en": "Plott Hound",
+      "group": 11,
+      "section": "11.2",
+      "section_name": "Američtí honiči a curs",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_405",
+      "cs": "Black Mouth Cur",
+      "en": "Black Mouth Cur",
+      "group": 11,
+      "section": "11.2",
+      "section_name": "Američtí honiči a curs",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_406",
+      "cs": "Mountain Cur",
+      "en": "Mountain Cur",
+      "group": 11,
+      "section": "11.2",
+      "section_name": "Američtí honiči a curs",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_407",
+      "cs": "Kerry Beagle",
+      "en": "Kerry Beagle",
+      "group": 11,
+      "section": "11.2",
+      "section_name": "Američtí honiči a curs",
+      "country": "Irsko",
+      "varieties": []
+    },
+    {
+      "id": "breed_408",
+      "cs": "Louisianský leopardí pes",
+      "en": "Catahoula Leopard Dog",
+      "group": 11,
+      "section": "11.3",
+      "section_name": "Pracovní a pastevečtí (non-FCI)",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_409",
+      "cs": "Karolínský pes",
+      "en": "Carolina Dog",
+      "group": 11,
+      "section": "11.3",
+      "section_name": "Pracovní a pastevečtí (non-FCI)",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_410",
+      "cs": "McNabský pes",
+      "en": "McNab Dog",
+      "group": 11,
+      "section": "11.3",
+      "section_name": "Pracovní a pastevečtí (non-FCI)",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_411",
+      "cs": "Tamaskan",
+      "en": "Tamaskan Dog",
+      "group": 11,
+      "section": "11.4",
+      "section_name": "Severští a primitivní (non-FCI)",
+      "country": "Finsko/UK",
+      "varieties": []
+    },
+    {
+      "id": "breed_412",
+      "cs": "Severoamerický inuitský pes",
+      "en": "Northern Inuit Dog",
+      "group": 11,
+      "section": "11.4",
+      "section_name": "Severští a primitivní (non-FCI)",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_413",
+      "cs": "Alaskan Klee Kai",
+      "en": "Alaskan Klee Kai",
+      "group": 11,
+      "section": "11.4",
+      "section_name": "Severští a primitivní (non-FCI)",
+      "country": "USA",
+      "varieties": [
+        "Standard",
+        "Miniature",
+        "Toy"
+      ]
+    },
+    {
+      "id": "breed_414",
+      "cs": "Novoguinejský zpívající pes",
+      "en": "New Guinea Singing Dog",
+      "group": 11,
+      "section": "11.4",
+      "section_name": "Severští a primitivní (non-FCI)",
+      "country": "Papua-Nová Guinea",
+      "varieties": []
+    },
+    {
+      "id": "breed_415",
+      "cs": "Patterdaleský teriér",
+      "en": "Patterdale Terrier",
+      "group": 11,
+      "section": "11.5",
+      "section_name": "Malí teriéři (non-FCI)",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_416",
+      "cs": "Plummerův teriér",
+      "en": "Plummer Terrier",
+      "group": 11,
+      "section": "11.5",
+      "section_name": "Malí teriéři (non-FCI)",
+      "country": "Velká Británie",
+      "varieties": []
+    },
+    {
+      "id": "breed_417",
+      "cs": "Toy Fox Terrier",
+      "en": "Toy Fox Terrier",
+      "group": 11,
+      "section": "11.5",
+      "section_name": "Malí teriéři (non-FCI)",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_418",
+      "cs": "Rat Terrier",
+      "en": "Rat Terrier",
+      "group": 11,
+      "section": "11.5",
+      "section_name": "Malí teriéři (non-FCI)",
+      "country": "USA",
+      "varieties": []
+    },
+    {
+      "id": "breed_419",
+      "cs": "Český strakatý pes",
+      "en": "Bohemian Spotted Dog",
+      "group": 11,
+      "section": "11.6",
+      "section_name": "Národní a laboratorní plemena",
+      "country": "ČR",
+      "varieties": []
+    },
+    {
+      "id": "breed_420",
+      "cs": "Chinook",
+      "en": "Chinook",
+      "group": 11,
+      "section": "11.4",
+      "section_name": "Severští a primitivní (non-FCI)",
+      "country": "USA",
+      "varieties": []
+    }
+  ]
+}
