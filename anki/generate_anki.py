@@ -5,8 +5,9 @@ Builds three card types per breed:
 2. Photo → FCI skupina + sekce
 3. Název → vše (skupina, sekce, varianty, země původu)
 
-Photos are downloaded from Czech Wikipedia (fallback: English Wikipedia),
-cached locally between runs, and embedded as Anki media.
+Photos use the FCI-first cascade (official FCI illustration, then Czech
+Wikipedia, then English Wikipedia) via src/photo_fetcher.py, cached locally
+between runs and embedded as Anki media.
 
 Usage:
     pip install genanki requests
@@ -30,15 +31,14 @@ References:
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import logging
 import sys
-import time
-import urllib.parse
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+# Make the repo-root `src` package importable when run as `python anki/...`.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 try:
     import genanki  # type: ignore
@@ -47,10 +47,12 @@ except ImportError:
     sys.exit(1)
 
 try:
-    import requests  # type: ignore
+    import requests  # type: ignore  # noqa: F401  (used transitively via photo_fetcher)
 except ImportError:
     print("Chybí balíček 'requests'. Nainstaluj přes: pip install requests", file=sys.stderr)
     sys.exit(1)
+
+from src.photo_fetcher import BreedPhotoFetcher
 
 
 logging.basicConfig(
@@ -70,183 +72,13 @@ MODEL_NAME_TO_ALL_ID = 1857394024
 
 
 # ============================================================
-# WIKIPEDIA IMAGE FETCHER (with on-disk cache)
+# HELPERS
 # ============================================================
 
 def to_roman(n: int) -> str:
     """Convert 1-11 to Roman numerals (used for FCI group labels)."""
     romans = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"]
     return romans[n] if 0 <= n < len(romans) else str(n)
-
-
-@dataclass
-class PhotoResult:
-    """Result of a photo fetch attempt."""
-    breed_id: str
-    local_path: Path | None  # None if not found
-    source_url: str | None
-    wiki_url: str | None
-    lang: str | None
-    error: str | None = None
-
-    @property
-    def ok(self) -> bool:
-        return self.local_path is not None and self.local_path.exists()
-
-
-class WikiPhotoFetcher:
-    """Fetch and cache breed photos from Wikipedia REST API.
-
-    Strategy: try Czech Wikipedia (Czech name) first, then simplified Czech name,
-    then English Wikipedia (English name), then simplified English name.
-
-    References:
-        - REST API summary endpoint: https://en.wikipedia.org/api/rest_v1/page/summary/{title}
-        - CORS for browsers: enabled with `access-control-allow-origin: *`
-    """
-
-    def __init__(
-        self,
-        cache_dir: Path,
-        user_agent: str,
-        sleep_seconds: float = 0.3,
-    ):
-        self.cache_dir = cache_dir
-        self.cache_dir.mkdir(parents=True, exist_ok=True)
-        self.metadata_file = cache_dir / "_metadata.json"
-        self.metadata: dict[str, dict[str, Any]] = self._load_metadata()
-        self.user_agent = user_agent
-        self.sleep_seconds = sleep_seconds
-        self.session = requests.Session()
-        self.session.headers.update({"User-Agent": user_agent})
-
-    def _load_metadata(self) -> dict[str, dict[str, Any]]:
-        if self.metadata_file.exists():
-            try:
-                return json.loads(self.metadata_file.read_text(encoding="utf-8"))
-            except json.JSONDecodeError:
-                logger.warning("Cache metadata corrupted, starting fresh")
-        return {}
-
-    def _save_metadata(self) -> None:
-        self.metadata_file.write_text(
-            json.dumps(self.metadata, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
-
-    def fetch(self, breed: dict[str, Any]) -> PhotoResult:
-        """Fetch photo for a single breed. Returns PhotoResult."""
-        breed_id = breed["id"]
-
-        # Check cache first
-        if breed_id in self.metadata:
-            meta = self.metadata[breed_id]
-            if meta.get("error"):
-                return PhotoResult(breed_id=breed_id, local_path=None, source_url=None,
-                                   wiki_url=None, lang=None, error=meta["error"])
-            local_path = self.cache_dir / meta["filename"]
-            if local_path.exists():
-                return PhotoResult(
-                    breed_id=breed_id,
-                    local_path=local_path,
-                    source_url=meta.get("source_url"),
-                    wiki_url=meta.get("wiki_url"),
-                    lang=meta.get("lang"),
-                )
-            # File missing — re-fetch
-            logger.info("  cache miss (file gone) for %s", breed["cs"])
-
-        # Build list of (lang, title) attempts
-        attempts: list[tuple[str, str]] = []
-        attempts.append(("cs", breed["cs"]))
-        # Simplified Czech: strip parenthetical, take part before dash/em-dash
-        simplified_cs = breed["cs"].split("(")[0].split("—")[0].split(" - ")[0].strip()
-        if simplified_cs != breed["cs"]:
-            attempts.append(("cs", simplified_cs))
-        attempts.append(("en", breed["en"]))
-        simplified_en = breed["en"].split("(")[0].split("—")[0].split(" - ")[0].strip()
-        if simplified_en != breed["en"]:
-            attempts.append(("en", simplified_en))
-
-        for lang, title in attempts:
-            result = self._try_fetch(breed_id, lang, title)
-            time.sleep(self.sleep_seconds)
-            if result.ok:
-                self.metadata[breed_id] = {
-                    "filename": result.local_path.name,  # type: ignore[union-attr]
-                    "source_url": result.source_url,
-                    "wiki_url": result.wiki_url,
-                    "lang": result.lang,
-                }
-                self._save_metadata()
-                return result
-
-        # All attempts failed
-        self.metadata[breed_id] = {"error": "no image found"}
-        self._save_metadata()
-        return PhotoResult(breed_id=breed_id, local_path=None, source_url=None,
-                           wiki_url=None, lang=None, error="no image found")
-
-    def _try_fetch(self, breed_id: str, lang: str, title: str) -> PhotoResult:
-        """Try fetching a single (lang, title) combination."""
-        try:
-            encoded = urllib.parse.quote(title.replace(" ", "_"), safe="")
-            summary_url = f"https://{lang}.wikipedia.org/api/rest_v1/page/summary/{encoded}"
-            resp = self.session.get(summary_url, timeout=15)
-            if resp.status_code != 200:
-                return PhotoResult(breed_id, None, None, None, None,
-                                   error=f"HTTP {resp.status_code}")
-            data = resp.json()
-            if data.get("type") in ("disambiguation", "no-extract"):
-                return PhotoResult(breed_id, None, None, None, None, error="disambiguation")
-
-            # Prefer originalimage for better Anki photos
-            image_info = data.get("originalimage") or data.get("thumbnail")
-            if not image_info or not image_info.get("source"):
-                return PhotoResult(breed_id, None, None, None, None, error="no image")
-
-            source_url = image_info["source"]
-            wiki_url = data.get("content_urls", {}).get("desktop", {}).get("page")
-
-            # Download the actual image bytes
-            img_resp = self.session.get(source_url, timeout=20)
-            if img_resp.status_code != 200:
-                return PhotoResult(breed_id, None, None, None, None,
-                                   error=f"image HTTP {img_resp.status_code}")
-
-            # Determine file extension from Content-Type or URL
-            content_type = img_resp.headers.get("Content-Type", "").lower()
-            ext = "jpg"
-            if "png" in content_type:
-                ext = "png"
-            elif "svg" in content_type:
-                ext = "svg"
-            elif "webp" in content_type:
-                ext = "webp"
-            elif "gif" in content_type:
-                ext = "gif"
-
-            # SVG is not great for Anki (mobile rendering issues)
-            if ext == "svg":
-                return PhotoResult(breed_id, None, None, None, None, error="SVG not supported")
-
-            # Stable filename based on breed_id (so re-runs don't duplicate)
-            filename = f"{breed_id}.{ext}"
-            local_path = self.cache_dir / filename
-            local_path.write_bytes(img_resp.content)
-
-            return PhotoResult(
-                breed_id=breed_id,
-                local_path=local_path,
-                source_url=source_url,
-                wiki_url=wiki_url,
-                lang=lang,
-            )
-        except requests.RequestException as e:
-            return PhotoResult(breed_id, None, None, None, None, error=str(e))
-        except Exception as e:
-            logger.exception("Unexpected error fetching %s (%s, %s)", breed_id, lang, title)
-            return PhotoResult(breed_id, None, None, None, None, error=str(e))
 
 
 # ============================================================
@@ -463,7 +295,7 @@ MODEL_NAME_TO_ALL = genanki.Model(
 
 def build_deck(
     db: dict[str, Any],
-    fetcher: WikiPhotoFetcher | None,
+    fetcher: BreedPhotoFetcher | None,
     filter_groups: set[int] | None,
     limit: int | None,
 ) -> tuple[genanki.Deck, list[Path]]:
@@ -601,9 +433,9 @@ def main() -> int:
             logger.error("Neplatný formát --groups: %s", args.groups)
             return 1
 
-    fetcher: WikiPhotoFetcher | None = None
+    fetcher: BreedPhotoFetcher | None = None
     if not args.no_images:
-        fetcher = WikiPhotoFetcher(
+        fetcher = BreedPhotoFetcher(
             cache_dir=args.photo_dir,
             user_agent=args.user_agent,
             sleep_seconds=args.sleep,

@@ -30,6 +30,11 @@ ignore = [
     "E501",  # line length handled by formatter, not enforced hard
 ]
 
+[tool.ruff.lint.per-file-ignores]
+# generate_anki.py inserts the repo root on sys.path before importing the
+# shared fetcher, so the import deliberately follows runtime code.
+"anki/generate_anki.py" = ["E402", "I001"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v"
