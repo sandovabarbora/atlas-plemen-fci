@@ -1,0 +1,7 @@
+# Runtime dependencies (Anki deck generation).
+# The data pipeline (src/) is stdlib-only and needs nothing here.
+genanki>=0.13
+requests>=2.31
+
+# Dev / CI: install with `pip install -r requirements.txt -r requirements-dev.txt`
+# or `pip install -e .[dev]`

@@ -1,0 +1,26 @@
+# Pre-commit hooks: lint + format Python, validate breeds.json against schema.
+# Install with: pip install pre-commit && pre-commit install
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.14
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-json
+      - id: check-yaml
+
+  - repo: local
+    hooks:
+      - id: validate-breeds-schema
+        name: Validate breeds.json against JSON schema
+        entry: python -m jsonschema -i data/breeds.json schemas/breeds.schema.json
+        language: system
+        files: ^(data/breeds\.json|schemas/breeds\.schema\.json)$
+        pass_filenames: false
