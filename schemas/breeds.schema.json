@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas-plemen/schemas/breeds.schema.json",
+  "title": "Atlas plemen FCI breed database",
+  "type": "object",
+  "required": ["version", "sections", "group_names", "breeds"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "string" },
+    "source": { "type": "string" },
+    "source_url": { "type": "string", "format": "uri" },
+    "sections": {
+      "type": "object",
+      "description": "Per-group map of section code (e.g. \"1.1\") to section name.",
+      "patternProperties": {
+        "^(1[01]|[1-9])$": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-9]+\\.[0-9]+$": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "group_names": {
+      "type": "object",
+      "patternProperties": {
+        "^(1[01]|[1-9])$": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "breeds": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/breed" }
+    }
+  },
+  "$defs": {
+    "breed": {
+      "type": "object",
+      "required": ["id", "cs", "en", "group", "section", "section_name", "country", "varieties"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^breed_[0-9]{3}$" },
+        "cs": { "type": "string", "minLength": 1 },
+        "en": { "type": "string", "minLength": 1 },
+        "group": { "type": "integer", "minimum": 1, "maximum": 11 },
+        "section": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+        "section_name": { "type": "string", "minLength": 1 },
+        "country": { "type": "string" },
+        "varieties": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "fci_number": { "type": "integer", "minimum": 1 },
+        "fci_url": { "type": "string" },
+        "fci_illustration_url": { "type": "string" },
+        "fci_standard_pdf_url": { "type": "string" },
+        "fci_section_name_en": { "type": "string" },
+        "fci_country_en": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "$comment": "Non-FCI breeds (group 11) must not carry an FCI number.",
+          "if": { "properties": { "group": { "const": 11 } } },
+          "then": { "not": { "required": ["fci_number"] } }
+        }
+      ]
+    }
+  }
+}
