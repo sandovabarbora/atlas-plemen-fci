@@ -1,0 +1,45 @@
+{
+  "version": "test",
+  "sections": {
+    "1": { "1.1": "Ovčáci" },
+    "4": { "4.1": "Jezevčíci" },
+    "11": { "11.1": "Buldoci a bull teriéři (non-FCI)" }
+  },
+  "group_names": {
+    "1": "Plemena ovčácká",
+    "4": "Jezevčíci",
+    "11": "Plemena neuznaná FCI"
+  },
+  "breeds": [
+    {
+      "id": "breed_000",
+      "cs": "Briard",
+      "en": "Berger de Brie",
+      "group": 1,
+      "section": "1.1",
+      "section_name": "Ovčáci",
+      "country": "Francie",
+      "varieties": ["černý", "plavý", "šedý"]
+    },
+    {
+      "id": "breed_001",
+      "cs": "Jezevčík standardní krátkosrstý",
+      "en": "Dachshund Standard Smooth",
+      "group": 4,
+      "section": "4.1",
+      "section_name": "Jezevčíci",
+      "country": "Německo",
+      "varieties": []
+    },
+    {
+      "id": "breed_002",
+      "cs": "Pitbull",
+      "en": "American Pit Bull Terrier",
+      "group": 11,
+      "section": "11.1",
+      "section_name": "Buldoci a bull teriéři (non-FCI)",
+      "country": "USA",
+      "varieties": []
+    }
+  ]
+}
