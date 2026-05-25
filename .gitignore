@@ -12,8 +12,8 @@ htmlcov/
 # Photo cache (binary, regenerable)
 .photo_cache/
 
-# Generated reports and build artifacts
-reports/
+# Generated reports and build artifacts (keep the manual open-questions log)
+reports/*
 !reports/open_questions.md
 dist/
 
