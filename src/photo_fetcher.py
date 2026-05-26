@@ -123,6 +123,19 @@ class BreedPhotoFetcher:
     def _fetch_fresh(self, breed: dict[str, Any]) -> PhotoResult:
         breed_id = breed["id"]
 
+        # 0. Curated coat-specific photo (dachshund smooth/long/wire, etc.),
+        # which overrides the single shared FCI drawing.
+        photo_url = breed.get("photo_url")
+        if photo_url:
+            result = self._download(
+                breed_id, photo_url, source="photo",
+                page_url=breed.get("fci_url"), name_suffix="photo",
+            )
+            if result.ok:
+                return result
+            logger.info("  curated photo failed for %s (%s), falling back",
+                        breed["cs"], result.error)
+
         # 1. Official FCI illustration (groups 1-10 that have one).
         illustration = breed.get("fci_illustration_url")
         if illustration:

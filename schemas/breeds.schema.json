@@ -58,7 +58,8 @@
         "fci_illustration_url": { "type": "string" },
         "fci_standard_pdf_url": { "type": "string" },
         "fci_section_name_en": { "type": "string" },
-        "fci_country_en": { "type": "string" }
+        "fci_country_en": { "type": "string" },
+        "photo_url": { "type": "string", "description": "Curated coat-specific photo (overrides the shared FCI illustration)." }
       },
       "allOf": [
         {

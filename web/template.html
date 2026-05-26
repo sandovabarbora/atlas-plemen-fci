@@ -985,8 +985,19 @@ const BreedPhotos = (function() {
     const promise = (async () => {
       let result = null;
 
+      // 0. Curated coat-specific photo (e.g. dachshund smooth/long/wire), which
+      // overrides the single shared FCI drawing for visually-distinct coats.
+      if (breed.photo_url) {
+        result = {
+          image: breed.photo_url,
+          source: 'photo',
+          page_url: breed.fci_url || null,
+          standard_pdf_url: breed.fci_standard_pdf_url || null,
+        };
+      }
+
       // 1. Official FCI illustration (groups 1-10 only; some breeds lack one).
-      if (breed.fci_illustration_url) {
+      if (!result && breed.fci_illustration_url) {
         result = {
           image: breed.fci_illustration_url,
           source: 'fci',
@@ -1312,20 +1323,41 @@ const QuestionGen = (function() {
     return { type: 'flip', breed, prompt: 'Co je to za plemeno a kam patří?' };
   }
 
-  // Two breeds are visually indistinguishable when they share the SAME FCI
-  // illustration, i.e. the same fci_number (all nine dachshunds -> #148).
-  // Schnauzer sizes have distinct numbers/illustrations, so they stay separate.
-  function imageKey(b) {
-    return b.fci_number ? 'f' + b.fci_number : 'c' + b.cs;
+  // Coat is visible in a photo; size (rabbit/miniature/standard) is not. We have
+  // curated a correct photo per coat, so coats become distinct answers while
+  // sizes collapse.
+  function coatOf(b) {
+    const s = b.cs.toLowerCase();
+    if (s.includes('drsnosrst') || s.includes('hrubosrst')) return 'wire';
+    if (s.includes('krátkosrst') || s.includes('hladkosrst')) return 'smooth';
+    if (s.includes('dlouhosrst')) return 'long';
+    return '';
   }
 
-  // Multi-entry FCI breeds (dachshund, poodle, Belgian shepherd…) can't have
-  // their size/coat variant read off a single shared drawing, so label them by
-  // the base name in recognition questions.
+  // Remove only size tokens, keeping the coat word ("Jezevčík standardní
+  // krátkosrstý" -> "Jezevčík krátkosrstý").
+  function stripSize(name) {
+    const SIZE = /(?:^|\s)(velký|velká|střední|malý|malá|trpasličí|toy|standardní|miniaturní|králičí|kaninčí)(?=\s|$)/giu;
+    return name.replace(SIZE, ' ').replace(/\s{2,}/g, ' ').trim();
+  }
+
+  // Two breeds look the same in a photo when they share the FCI illustration
+  // (same fci_number) AND the same coat. Distinct coats (with their own curated
+  // photo) and distinct fci_numbers (Schnauzer sizes) stay separate.
+  function imageKey(b) {
+    const base = b.fci_number ? 'f' + b.fci_number : 'c' + b.cs;
+    const coat = coatOf(b);
+    return coat ? base + '|' + coat : base;
+  }
+
+  // Label for recognition questions: collapse size, but keep the coat if the
+  // breed's variants actually differ by coat; otherwise fall back to the base.
   function recognitionLabel(breed, allBreeds) {
-    const shared = breed.fci_number
-      && allBreeds.some(o => o.id !== breed.id && o.fci_number === breed.fci_number);
-    return shared ? stripVariant(breed.cs) : breed.cs;
+    if (!breed.fci_number) return breed.cs;
+    const siblings = allBreeds.filter(o => o.fci_number === breed.fci_number);
+    if (siblings.length <= 1) return breed.cs;
+    const coats = new Set(siblings.map(coatOf).filter(Boolean));
+    return coats.size > 1 ? stripSize(breed.cs) : stripVariant(breed.cs);
   }
 
   function genBreedName(breed, allBreeds) {
@@ -1589,6 +1621,11 @@ const Quiz = (function() {
       } else if (result.page_url) {
         parts.push(`<a href="${escapeHtml(result.page_url)}" target="_blank" rel="noopener">FCI ↗</a>`);
       }
+    } else if (result.source === 'photo') {
+      parts.push('<span class="src-badge src-wiki">foto</span>');
+      if (result.standard_pdf_url) {
+        parts.push(`<a href="${escapeHtml(result.standard_pdf_url)}" target="_blank" rel="noopener">Standard FCI ↗</a>`);
+      }
     } else if (result.source) {
       const label = result.source === 'cs.wiki' ? 'cs wiki' : 'en wiki';
       parts.push(`<span class="src-badge src-wiki">${label}</span>`);
@@ -1637,7 +1674,7 @@ const Quiz = (function() {
       // If the FCI illustration fails to load (missing/404), fall back to the
       // Wikipedia cascade so a photo always appears when one exists.
       img.onerror = async () => {
-        if (result.source === 'fci') {
+        if (result.source === 'fci' || result.source === 'photo') {
           placeholder.innerHTML = '<span class="spinner"></span>&nbsp; zkouším Wikipedii';
           const alt = await BreedPhotos.resolveWiki(breed);
           if (currentBreed && currentBreed.id !== breed.id) return;

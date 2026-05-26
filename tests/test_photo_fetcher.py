@@ -70,6 +70,19 @@ def test_fetch_prefers_fci_illustration(tmp_path: Path) -> None:
     assert result.page_url == "https://fci/page"
 
 
+def test_fetch_prefers_curated_photo_over_fci(tmp_path: Path) -> None:
+    breed = {"id": "breed_146", "cs": "Jezevčík králičí krátkosrstý", "en": "Dachshund",
+             "photo_url": "https://commons/smooth.jpg",
+             "fci_illustration_url": "https://fci/148g04.jpg"}
+    f = _fetcher(tmp_path, {
+        "commons/smooth.jpg": FakeResponse(200, content=b"img"),
+        "fci/148g04.jpg": FakeResponse(200, content=b"drawing"),
+    })
+    result = f.fetch(breed)
+    assert result.source == "photo"
+    assert result.local_path.name == "breed_146_photo.jpg"
+
+
 def test_fetch_falls_back_to_wikipedia(tmp_path: Path) -> None:
     breed = {"id": "breed_001", "cs": "Pitbull", "en": "Pit Bull"}  # no FCI url
     routes = {
