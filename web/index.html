@@ -300,6 +300,25 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   margin-bottom: 0.3rem;
 }
 .placement-advance { margin-top: 0.9rem; width: 100%; }
+.step-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.7rem;
+}
+.step-chip {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid var(--line);
+  color: var(--ink-faint);
+  background: var(--paper);
+}
+.step-chip.current { color: var(--accent-deep); border-color: var(--accent); }
+.step-chip.ok { color: #fff; background: var(--correct); border-color: var(--correct); }
+.step-chip.bad { color: #fff; background: var(--wrong); border-color: var(--wrong); }
 .feedback dl {
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -1241,18 +1260,19 @@ const QuestionGen = (function() {
     throw new Error('Unknown mode: ' + mode);
   }
 
-  // Combined "what breed + where it belongs" as three sequential sub-questions.
-  // The learner answers all three on one photo; counted correct only if all hit.
+  // Combined "what breed + where it belongs" as sequential sub-questions.
+  // The learner answers all on one photo; counted correct only if all hit.
+  // The section step is skipped when the group has a single section (no point
+  // clicking the only option, e.g. group 4 Jezevčíci -> 4.1).
   function genPlacement(breed, allBreeds) {
-    return {
-      type: 'placement',
-      breed,
-      steps: [
-        genBreedName(breed, allBreeds),
-        genFciGroup(breed),
-        genFciSection(breed),
-      ],
-    };
+    const steps = [
+      { ...genBreedName(breed, allBreeds), short: 'Plemeno' },
+      { ...genFciGroup(breed), short: 'Skupina' },
+    ];
+    if (Object.keys(BREED_DB.sections[breed.group] || {}).length > 1) {
+      steps.push({ ...genFciSection(breed), short: 'Sekce' });
+    }
+    return { type: 'placement', breed, steps };
   }
 
   // Flip card: photo, then reveal the full placement and self-grade.
@@ -1606,16 +1626,31 @@ const Quiz = (function() {
     document.getElementById('quiz-actions').style.display = 'none';
     currentQuestion._stepIdx = 0;
     currentQuestion._allCorrect = true;
+    currentQuestion._results = [];  // per-step { short, correct }
     renderPlacementStep();
+  }
+
+  // Status chips for the steps: done -> ✓/✗, current -> •, pending -> dim.
+  function placementStatusHtml(q) {
+    return `<div class="step-status">${q.steps.map((s, i) => {
+      let mark = '·', cls = 'pending';
+      if (i < q._results.length) {
+        const ok = q._results[i].correct;
+        mark = ok ? '✓' : '✗';
+        cls = ok ? 'ok' : 'bad';
+      } else if (i === q._stepIdx) {
+        mark = '•'; cls = 'current';
+      }
+      return `<span class="step-chip ${cls}">${mark} ${escapeHtml(s.short)}</span>`;
+    }).join('')}</div>`;
   }
 
   function renderPlacementStep() {
     const q = currentQuestion;
     const step = q.steps[q._stepIdx];
-    const total = q.steps.length;
     const host = document.getElementById('placement-step');
     host.innerHTML = `
-      <div class="q-progress-mini">${q._stepIdx + 1}/${total}</div>
+      ${placementStatusHtml(q)}
       <h2 class="q-text">${escapeHtml(step.prompt)}</h2>
       <div class="options ${step.grid_2 ? 'grid-2' : ''}" id="options">
         ${step.options.map((o, i) => `<button class="opt" data-idx="${i}">${escapeHtml(o.label)}</button>`).join('')}
@@ -1631,6 +1666,7 @@ const Quiz = (function() {
     const step = q.steps[q._stepIdx];
     const chosen = step.options[idx];
     if (!chosen.correct) q._allCorrect = false;
+    q._results.push({ short: step.short, correct: chosen.correct });
 
     const optEls = document.querySelectorAll('#placement-step .opt');
     optEls.forEach((el, i) => {
@@ -1648,7 +1684,7 @@ const Quiz = (function() {
       advance.disabled = true;
       if (isLast) {
         await recordResult(q._allCorrect);
-        showFeedback(q._allCorrect);
+        showPlacementFeedback(q);
         document.getElementById('quiz-actions').style.display = 'flex';
       } else {
         q._stepIdx++;
@@ -1656,6 +1692,17 @@ const Quiz = (function() {
       }
     });
     host.appendChild(advance);
+  }
+
+  // Feedback for placement: per-part breakdown on top of the full solution.
+  function showPlacementFeedback(q) {
+    const breakdown = q._results.map(r =>
+      `<span class="step-chip ${r.correct ? 'ok' : 'bad'}">${r.correct ? '✓' : '✗'} ${escapeHtml(r.short)}</span>`
+    ).join('');
+    const fb = document.getElementById('feedback');
+    fb.innerHTML = `<h4>${q._allCorrect ? '✓ Vše správně' : '✗ Něco chybělo'}</h4>`
+      + `<div class="step-status">${breakdown}</div>` + solutionDl(q.breed);
+    fb.className = 'feedback visible ' + (q._allCorrect ? 'correct' : 'wrong');
   }
 
   // --- Flip card (otáčecí kartička) ---
