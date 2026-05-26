@@ -1774,16 +1774,6 @@
       "fci_country_en": "SLOVENIA"
     },
     {
-      "id": "breed_102",
-      "cs": "Jihovýchodoevropský ovčák",
-      "en": "South-East European Shepherd",
-      "group": 2,
-      "section": "2.2",
-      "section_name": "Molossoidní plemena",
-      "country": "Rumunsko",
-      "varieties": []
-    },
-    {
       "id": "breed_103",
       "cs": "Kontinentální buldok",
       "en": "Continental Bulldog",

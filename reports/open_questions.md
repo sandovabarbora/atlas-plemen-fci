@@ -4,13 +4,10 @@ Generováno během enrichment iterace. Default chování zvoleno, čeká na rozh
 
 ## P0 — FCI enrichment
 
-### breed_102 — Jihovýchodoevropský ovčák (South-East European Shepherd)
-Nenalezeno ani v ČMKU seznamu, ani v paiv FCI CSV pod tímto názvem.
-Pravděpodobně jde o regionální / neustálené pojmenování (souvisí se
-Šarplaninským pasteveckým psem #41 nebo srbskými/balkánskými pasteveckými
-plemeny). **Default:** ponecháno bez FCI metadat (zůstane v unmatched.csv).
-**Potřebuji:** potvrdit, zda je to oficiální FCI plemeno a pod jakým číslem,
-nebo zda ho přesunout do skupiny 11 (non-FCI), případně smazat jako duplikát.
+### breed_102 — Jihovýchodoevropský ovčák (South-East European Shepherd) — VYŘEŠENO
+Nenalezeno v ČMKU ani v paiv FCI CSV; "South-East European Shepherd" není
+oficiální FCI plemeno a nešlo o duplikát. **Rozhodnutí (2026-05-26): smazáno**
+z breeds.json. Po smazání je enrichment 396/396 (100 %), 0 nesparovaných.
 
 ## Korekce oproti zadání (potvrzeno měřením)
 
