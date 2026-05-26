@@ -996,16 +996,7 @@ const BreedPhotos = (function() {
       }
 
       // 2-5. Wikipedia cascade (also the only path for non-FCI group 11).
-      if (!result) result = await tryWiki('cs', breed.cs);
-      if (!result) {
-        const simplified = breed.cs.replace(/\s*\([^)]*\)/g, '').split(/[-—]/)[0].trim();
-        if (simplified !== breed.cs) result = await tryWiki('cs', simplified);
-      }
-      if (!result) result = await tryWiki('en', breed.en);
-      if (!result) {
-        const simplifiedEn = breed.en.replace(/\s*\([^)]*\)/g, '').split(/[-—]/)[0].trim();
-        if (simplifiedEn !== breed.en) result = await tryWiki('en', simplifiedEn);
-      }
+      if (!result) result = await wikiCascade(breed);
 
       const finalResult = result || { error: true, breed_id: breed.id };
       cache[breed.id] = finalResult;
@@ -1018,12 +1009,38 @@ const BreedPhotos = (function() {
     return promise;
   }
 
+  // The Wikipedia-only cascade (cs, simplified cs, en, simplified en).
+  async function wikiCascade(breed) {
+    let result = await tryWiki('cs', breed.cs);
+    if (!result) {
+      const simplified = breed.cs.replace(/\s*\([^)]*\)/g, '').split(/[-—]/)[0].trim();
+      if (simplified !== breed.cs) result = await tryWiki('cs', simplified);
+    }
+    if (!result) result = await tryWiki('en', breed.en);
+    if (!result) {
+      const simplifiedEn = breed.en.replace(/\s*\([^)]*\)/g, '').split(/[-—]/)[0].trim();
+      if (simplifiedEn !== breed.en) result = await tryWiki('en', simplifiedEn);
+    }
+    return result;
+  }
+
+  // Fallback used when an FCI illustration fails to load in the browser: resolve
+  // a Wikipedia photo and OVERWRITE the cached entry so the broken FCI URL is
+  // not retried next time. Guarantees a photo shows whenever Wikipedia has one.
+  async function resolveWiki(breed) {
+    await ensureLoaded();
+    const result = (await wikiCascade(breed)) || { error: true, breed_id: breed.id };
+    cache[breed.id] = result;
+    persist().catch(e => console.error('[BreedPhotos] persist failed:', e));
+    return result;
+  }
+
   async function clearCache() {
     cache = {};
     await Storage.remove(CACHE_KEY);
   }
 
-  return { fetchBreedImage, clearCache };
+  return { fetchBreedImage, resolveWiki, clearCache };
 })();
 
 // ============================================================
@@ -1588,17 +1605,34 @@ const Quiz = (function() {
         return;
       }
 
-      img.onload = () => {
-        if (currentBreed && currentBreed.id === breed.id) {
-          img.classList.add('loaded');
-          placeholder.style.display = 'none';
-          credit.innerHTML = photoCreditHtml(result);
-        }
+      const showImage = (res) => {
+        img.onload = () => {
+          if (currentBreed && currentBreed.id === breed.id) {
+            img.classList.add('loaded');
+            placeholder.style.display = 'none';
+            credit.innerHTML = photoCreditHtml(res);
+          }
+        };
+        img.src = res.image;
       };
-      img.onerror = () => {
+
+      // If the FCI illustration fails to load (missing/404), fall back to the
+      // Wikipedia cascade so a photo always appears when one exists.
+      img.onerror = async () => {
+        if (result.source === 'fci') {
+          placeholder.innerHTML = '<span class="spinner"></span>&nbsp; zkouším Wikipedii';
+          const alt = await BreedPhotos.resolveWiki(breed);
+          if (currentBreed && currentBreed.id !== breed.id) return;
+          if (alt.image) {
+            img.onerror = () => { placeholder.textContent = 'Fotku se nepodařilo načíst'; };
+            showImage(alt);
+            return;
+          }
+        }
         placeholder.textContent = 'Fotku se nepodařilo načíst';
       };
-      img.src = result.image;
+
+      showImage(result);
     } catch (e) {
       console.error('[Quiz] Image fetch error:', e);
       placeholder.textContent = 'Chyba načítání fotky';
