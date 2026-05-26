@@ -1312,35 +1312,48 @@ const QuestionGen = (function() {
     return { type: 'flip', breed, prompt: 'Co je to za plemeno a kam patří?' };
   }
 
-  function genBreedName(breed, allBreeds) {
-    // 3 distractors: prefer same FCI group/section for harder questions
-    const sameGroup = allBreeds.filter(b => b.id !== breed.id && b.group === breed.group);
-    const sameSection = sameGroup.filter(b => b.section === breed.section);
+  // Two breeds are visually indistinguishable when they share the SAME FCI
+  // illustration, i.e. the same fci_number (all nine dachshunds -> #148).
+  // Schnauzer sizes have distinct numbers/illustrations, so they stay separate.
+  function imageKey(b) {
+    return b.fci_number ? 'f' + b.fci_number : 'c' + b.cs;
+  }
 
+  // Multi-entry FCI breeds (dachshund, poodle, Belgian shepherd…) can't have
+  // their size/coat variant read off a single shared drawing, so label them by
+  // the base name in recognition questions.
+  function recognitionLabel(breed, allBreeds) {
+    const shared = breed.fci_number
+      && allBreeds.some(o => o.id !== breed.id && o.fci_number === breed.fci_number);
+    return shared ? stripVariant(breed.cs) : breed.cs;
+  }
+
+  function genBreedName(breed, allBreeds) {
+    // Distractors must be visually distinct breeds: never the same illustration.
+    const targetKey = imageKey(breed);
+    const usedKeys = new Set([targetKey]);
     const distractors = [];
-    // Pick first 2 from same section if available
-    const sectionPool = shuffled(sameSection).slice(0, 2);
-    distractors.push(...sectionPool);
-    // Fill remaining from same group
-    const groupPool = shuffled(sameGroup.filter(b => !distractors.includes(b)));
-    while (distractors.length < 3 && groupPool.length > 0) {
-      distractors.push(groupPool.shift());
-    }
-    // Last resort: any breed
-    const allPool = shuffled(allBreeds.filter(b => b.id !== breed.id && !distractors.includes(b)));
-    while (distractors.length < 3 && allPool.length > 0) {
-      distractors.push(allPool.shift());
-    }
+    const tryAdd = (b) => {
+      const k = imageKey(b);
+      if (usedKeys.has(k)) return;
+      usedKeys.add(k);
+      distractors.push(b);
+    };
+    const sameGroup = shuffled(allBreeds.filter(b => b.group === breed.group && imageKey(b) !== targetKey));
+    const sameSection = sameGroup.filter(b => b.section === breed.section);
+    for (const b of sameSection) { if (distractors.length >= 3) break; tryAdd(b); }
+    for (const b of sameGroup) { if (distractors.length >= 3) break; tryAdd(b); }
+    for (const b of shuffled(allBreeds)) { if (distractors.length >= 3) break; tryAdd(b); }
 
     const options = shuffled([breed, ...distractors]).map(b => ({
       id: b.id,
-      label: b.cs,
+      label: recognitionLabel(b, allBreeds),
       correct: b.id === breed.id,
     }));
 
     return {
       type: 'breed_name',
-      prompt: 'Které plemeno je na fotografii?',
+      prompt: 'Které plemeno je na obrázku?',
       breed,
       options,
       grid_2: true,
@@ -1441,13 +1454,18 @@ const QuestionGen = (function() {
   }
 
   function stripVariant(name) {
-    // Heuristic: strip size/coat/color suffixes to find base name
+    // Heuristic: strip size/coat/colour suffixes to find the base name.
+    // NOTE: no \b after the variant words — Czech words end in accented letters
+    // (málý, králičí) where JS's ASCII \b would not match. We anchor on the
+    // first variant token and eat everything after it instead (/u flag).
+    const VARIANT = '(?:velký|velká|střední|malý|malá|trpasličí|toy|králičí|kaninčí'
+      + '|standardní|miniaturní|krátkosrstý|krátkosrstá|dlouhosrstý|dlouhosrstá'
+      + '|drsnosrstý|drsnosrstá|hrubosrstý|hrubosrstá|hladkosrstý|hladkosrstá)';
     return name
-      .replace(/\s+(velký|střední|malý|trpasličí|toy|králičí|standardní|standardní|miniaturní)\b.*$/i, '')
-      .replace(/\s+(krátkosrstý|dlouhosrstý|drsnosrstý|hrubosrstý|hladkosrstý)\b.*$/i, '')
-      .replace(/\s+(s krátkou srstí v obličeji|s dlouhou srstí v obličeji).*$/i, '')
-      .replace(/\s+—.+$/, '')
-      .replace(/\s*\([^)]*\)$/, '')
+      .replace(/\s+(s krátkou srstí v obličeji|s dlouhou srstí v obličeji).*$/iu, '')
+      .replace(new RegExp('\\s+' + VARIANT + '(?:\\s.*)?$', 'iu'), '')
+      .replace(/\s+—.+$/u, '')
+      .replace(/\s*\([^)]*\)\s*$/u, '')
       .trim();
   }
 
