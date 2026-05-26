@@ -66,6 +66,19 @@ dist/                      # build artefakty (gitignored)
 4. Sestav kvíz: `python src/build_db.py`
 5. Přegeneruj Anki: `python anki/generate_anki.py`
 
+### Ověřit / opravit české názvy
+1. `python src/verify_cs_names.py` (rate-limited na 1 dotaz/s) zapíše
+   `reports/cs_name_review.csv` (sloupec `cs_match`). Nic nepřepisuje.
+2. Projdi report ručně, sporné opravy zapiš do `data/cs_overrides.csv`
+   (sloupce: `id, cs_corrected, reason`).
+3. `python src/apply_cs_overrides.py` přepíše `cs` v `breeds.json`
+   (`--dry-run` pro náhled). Pak přegeneruj kvíz/Anki.
+
+### Deploy na GitHub Pages
+`.github/workflows/deploy.yml` při push na `main` sestaví `web/`
+(`make_icons.py` + `build_db.py`) a publikuje na GitHub Pages. V repu zapni
+Settings → Pages → Source: GitHub Actions.
+
 ### Foto-cascade
 Pořadí zdrojů (kvíz i Anki používají stejnou logiku):
 1. **oficiální FCI ilustrace** (`fci_illustration_url`, jen skupiny 1-10),

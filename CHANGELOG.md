@@ -34,11 +34,21 @@ Enrichment iterace: z funkčního prototypu na produkční datový základ.
 - 1 plemeno (`breed_102`, Jihovýchodoevropský ovčák) zůstává bez FCI metadat,
   viz `reports/open_questions.md`.
 
+### Added (pokračování iterace)
+- Kvíz: režim **Plemeno + zařazení** (vícestupňový: plemeno → skupina → sekce,
+  správně jen když vše) a **otáčecí kartička** (odhalení + sebehodnocení).
+- Výběr plemen **Projet vše**: náhodně, ale pokryje každé plemeno než se opakuje
+  (persistovaná zamíchaná fronta), vedle Leitner SRS.
+- **PWA**: manifest, service worker (cache-first shell, network-first fotky),
+  ikony 192/512, instalovatelné a offline.
+- `src/verify_cs_names.py`: ověření českých názvů proti cs.wikipedii
+  (report-only, `reports/cs_name_review.csv`).
+- `src/apply_cs_overrides.py`: ruční aplikace oprav z `data/cs_overrides.csv`.
+- GitHub Pages deploy workflow (`.github/workflows/deploy.yml`).
+
 ### Známé chybějící (TODO další iterace)
-- P1: `verify_cs_names.py` (ověření českých názvů proti Wikipedii).
-- P1: UI vylepšení (FCI číslo v feedbacku, variant pills, drill mode).
-- P1: PWA (manifest, service worker, offline, add-to-home-screen).
-- P3: GitHub Pages deploy workflow.
+- Variant pills jako filtr kvízu, drill mode (box 1).
+- Audio, export statistik jako txt (P3 nice-to-have).
 
 ## [1.0.0] - výchozí stav
 
