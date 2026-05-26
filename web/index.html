@@ -937,14 +937,18 @@ console.log('[Atlas] Storage backend:', Storage.backend);
 // ============================================================
 const BreedPhotos = (function() {
   const CACHE_KEY = 'atlas:photo-cache-v2';
-  let cache = {};
+  let cache = {};            // persisted: only SUCCESSFUL resolutions
+  let failed = {};           // in-memory only: this session's failures (retried on reload)
   let loaded = false;
   let pending = {};
 
   async function ensureLoaded() {
     if (loaded) return;
-    const stored = await Storage.get(CACHE_KEY);
-    cache = stored || {};
+    const stored = await Storage.get(CACHE_KEY) || {};
+    // Drop any persisted negative results (older builds cached failures, which
+    // made transient errors stick as a permanent "photo not available").
+    for (const k in stored) { if (stored[k] && stored[k].error) delete stored[k]; }
+    cache = stored;
     loaded = true;
   }
 
@@ -980,6 +984,7 @@ const BreedPhotos = (function() {
     await ensureLoaded();
 
     if (cache[breed.id]) return cache[breed.id];
+    if (failed[breed.id]) return { error: true, breed_id: breed.id }; // skip re-hammer this session
     if (pending[breed.id]) return pending[breed.id]; // dedupe parallel calls
 
     const promise = (async () => {
@@ -1010,8 +1015,14 @@ const BreedPhotos = (function() {
       if (!result) result = await wikiCascade(breed);
 
       const finalResult = result || { error: true, breed_id: breed.id };
-      cache[breed.id] = finalResult;
-      persist().catch(e => console.error('[BreedPhotos] persist failed:', e));
+      // Only PERSIST successes. Failures are kept in-memory so the next reload
+      // retries them (transient 429s/blips must not stick permanently).
+      if (finalResult.error) {
+        failed[breed.id] = true;
+      } else {
+        cache[breed.id] = finalResult;
+        persist().catch(e => console.error('[BreedPhotos] persist failed:', e));
+      }
       delete pending[breed.id];
       return finalResult;
     })();
@@ -1041,13 +1052,19 @@ const BreedPhotos = (function() {
   async function resolveWiki(breed) {
     await ensureLoaded();
     const result = (await wikiCascade(breed)) || { error: true, breed_id: breed.id };
-    cache[breed.id] = result;
-    persist().catch(e => console.error('[BreedPhotos] persist failed:', e));
+    if (result.error) {
+      failed[breed.id] = true;
+    } else {
+      cache[breed.id] = result;
+      delete failed[breed.id];
+      persist().catch(e => console.error('[BreedPhotos] persist failed:', e));
+    }
     return result;
   }
 
   async function clearCache() {
     cache = {};
+    failed = {};
     await Storage.remove(CACHE_KEY);
   }
 

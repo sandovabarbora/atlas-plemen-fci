@@ -4,7 +4,7 @@
 //   - breed photos (FCI illustrations, Wikipedia images): network-first with a
 //     cache fallback, so fresh photos win online but cached ones work offline
 //   - Wikipedia summary JSON: network-first, cached so a breed seen once works offline
-const VERSION = 'atlas-v1';
+const VERSION = 'atlas-v2';
 const SHELL_CACHE = `${VERSION}-shell`;
 const PHOTO_CACHE = `${VERSION}-photos`;
 
@@ -31,14 +31,9 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-function isPhoto(url) {
-  return /\.(jpg|jpeg|png|webp|gif)$/i.test(url.pathname)
-    || url.hostname.endsWith('fci.be')
-    || url.hostname.endsWith('wikimedia.org')
-    || url.hostname.endsWith('wikipedia.org');
-}
-
-// Cache-first: shell. Network-first with cache fallback: photos and wiki data.
+// Cache-first: same-origin shell. Network-first (cache fallback): cross-origin
+// IMAGES only. Everything else (notably the Wikipedia summary JSON API) is left
+// untouched so the SW never turns an API hiccup into a failure.
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET') return;
@@ -56,8 +51,9 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cross-origin photos / wiki: network-first, fall back to cache.
-  if (isPhoto(url)) {
+  // Cross-origin images (FCI illustrations, Wikimedia photos): network-first,
+  // fall back to cache for offline. Non-image cross-origin requests pass through.
+  if (request.destination === 'image') {
     event.respondWith(
       fetch(request).then((resp) => {
         const copy = resp.clone();
