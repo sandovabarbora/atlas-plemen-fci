@@ -2038,9 +2038,12 @@ const Quiz = (function() {
         <div class="label">O plemeni</div>
         <p class="edu-text" id="edu-text"><span class="edu-loading">načítám popis…</span></p>
         <div class="edu-links" id="edu-links">${
-          b.fci_standard_pdf_url
+          (b.cmku_popis_pdf
+            ? `<a href="${escapeHtml(b.cmku_popis_pdf)}" target="_blank" rel="noopener">ČMKU popis ↗</a>`
+            : '')
+          + (b.fci_standard_pdf_url
             ? `<a href="${escapeHtml(b.fci_standard_pdf_url)}" target="_blank" rel="noopener">Standard FCI ↗</a>`
-            : ''
+            : '')
         }</div>
       </div>`;
   }

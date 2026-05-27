@@ -66,7 +66,15 @@ dist/                      # build artefakty (gitignored)
 4. Sestav kvíz: `python src/build_db.py`
 5. Přegeneruj Anki: `python anki/generate_anki.py`
 
-### Ověřit / opravit české názvy
+### Připojit autoritativní ČMKU odkazy + ověřit české názvy proti ČMKU
+`python src/enrich_cmku.py --verify` doplní ke každému plemenu `cmku_url`
+(detail) a `cmku_popis_pdf` (oficiální český popis, HEAD-ověřený, žádné mrtvé
+odkazy) a zapíše `reports/cmku_name_review.csv` (kde se náš český název liší od
+ČMKU). ČMKU je autorita pro české názvy; offline, bez rate-limitu. Pozor: ČMKU
+místy používá zkratky / anglické tvary (Beagle, retriever), takže není slepě
+„správnější" než naše ustálené názvy (Bígl, retrívr): report procházej ručně.
+
+### Ověřit / opravit české názvy (Wikipedia, doplňkově)
 1. `python src/verify_cs_names.py` (rate-limited na 1 dotaz/s) zapíše
    `reports/cs_name_review.csv` (sloupec `cs_match`). Nic nepřepisuje.
 2. Projdi report ručně, sporné opravy zapiš do `data/cs_overrides.csv`
