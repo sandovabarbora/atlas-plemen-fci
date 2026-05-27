@@ -76,8 +76,20 @@ def load_cmku_full(path: Path) -> list[CmkuFull]:
     return rows
 
 
+def _best_by_name(keys: list[str], rows: list[tuple[CmkuFull, list[str]]]) -> tuple[float, CmkuFull | None]:
+    """Highest token-sort ratio between any breed key and any row key."""
+    best, best_row = 0.0, None
+    for key in keys:
+        for row, rkeys in rows:
+            for rk in rkeys:
+                score = ef.token_sort_ratio(key, rk)
+                if score > best:
+                    best, best_row = score, row
+    return best, best_row
+
+
 def match_row(breed: dict[str, Any], rows: list[tuple[CmkuFull, list[str]]]) -> CmkuFull | None:
-    """Find the best ČMKU row for a breed (exact, then variant-stripped, then fuzzy)."""
+    """Find the best ČMKU row: exact name, variant-stripped, FCI number, then fuzzy."""
     keys = ef.candidate_keys(breed)
     # Exact: any breed key equals any row key.
     for key in keys:
@@ -90,14 +102,21 @@ def match_row(breed: dict[str, Any], rows: list[tuple[CmkuFull, list[str]]]) -> 
             if any(ef.strip_variant(rk) in vkeys for rk in rkeys)}
     if len(hits) == 1:
         return next(iter(hits.values()))
-    # Fuzzy: best token-sort ratio.
-    best, best_row = 0.0, None
-    for key in keys:
-        for row, rkeys in rows:
-            for rk in rkeys:
-                score = ef.token_sort_ratio(key, rk)
-                if score > best:
-                    best, best_row = score, row
+    # FCI-number fallback: the breed was already enriched with an FCI number, and
+    # ČMKU rows carry numbers too, so the same-number ČMKU row IS the same breed.
+    # When several ČMKU rows share the number (e.g. German Spitz sizes), pick the
+    # one whose name best matches (so a size/colour variant lands on its row).
+    num = breed.get("fci_number")
+    if num:
+        same = [(row, rkeys) for row, rkeys in rows if row.fci_number == num]
+        if len(same) == 1:
+            return same[0][0]
+        if same:
+            _, row = _best_by_name(keys, same)
+            if row is not None:
+                return row
+    # Fuzzy: best token-sort ratio across all rows.
+    best, best_row = _best_by_name(keys, rows)
     return best_row if best >= ef.FUZZY_THRESHOLD else None
 
 

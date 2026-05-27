@@ -809,7 +809,7 @@
     },
     {
       "id": "breed_039",
-      "cs": "Rumunský mioritic ovčák",
+      "cs": "Rumunský mioritský ovčák",
       "en": "Romanian Mioritic Shepherd",
       "group": 1,
       "section": "1.1",
@@ -827,7 +827,7 @@
     },
     {
       "id": "breed_040",
-      "cs": "Saarlosův vlčák",
+      "cs": "Saarloosův vlčák",
       "en": "Saarloos Wolfdog",
       "group": 1,
       "section": "1.1",
@@ -1667,7 +1667,9 @@
       "fci_illustration_url": "",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/249g02-en.pdf",
       "fci_section_name_en": "Molossian type",
-      "fci_country_en": "SPAIN"
+      "fci_country_en": "SPAIN",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/301",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/301-perro-de-presa-mallorquin.pdf"
     },
     {
       "id": "breed_085",
@@ -1683,7 +1685,9 @@
       "fci_illustration_url": "",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/340g02-en.pdf",
       "fci_section_name_en": "Molossian type",
-      "fci_country_en": "PORTUGAL"
+      "fci_country_en": "PORTUGAL",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/388",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/388-chien-fila-de-saint-miguel.pdf"
     },
     {
       "id": "breed_086",
@@ -1807,7 +1811,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/327g02.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/327g02-en.pdf",
       "fci_section_name_en": "Pinscher and Schnauzer type",
-      "fci_country_en": "RUSSIAN FEDERATION"
+      "fci_country_en": "RUSSIAN FEDERATION",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/375",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/375-rusky-cerny-terier.pdf"
     },
     {
       "id": "breed_093",
@@ -1895,7 +1901,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/346g02.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/346g02-en.pdf",
       "fci_section_name_en": "Molossian type",
-      "fci_country_en": "SPAIN"
+      "fci_country_en": "SPAIN",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/394",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/394-presa-canario.pdf"
     },
     {
       "id": "breed_098",
@@ -1917,7 +1925,7 @@
     },
     {
       "id": "breed_099",
-      "cs": "Uruguayský cimarrón",
+      "cs": "Uruguajský cimarron",
       "en": "Cimarrón Uruguayo",
       "group": 2,
       "section": "2.2",
@@ -2629,7 +2637,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/370g03.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/370g03-en.pdf",
       "fci_section_name_en": "Large and medium sized Terriers",
-      "fci_country_en": "SPAIN"
+      "fci_country_en": "SPAIN",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/457",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/457-valencian-terier.pdf"
     },
     {
       "id": "breed_140",
@@ -2897,7 +2907,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/135g05.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/135g05-en.pdf",
       "fci_section_name_en": "Nordic Watchdogs and Herders",
-      "fci_country_en": "SWEDEN"
+      "fci_country_en": "SWEDEN",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/152",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/152-svedsky-laponsky-pes.pdf"
     },
     {
       "id": "breed_153",
@@ -2992,7 +3004,9 @@
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/094g05-en.pdf",
       "fci_section_name_en": "Primitive type - Hunting Dogs",
       "fci_country_en": "PORTUGAL",
-      "photo_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Portuguese_Podengo_Pequeno_Wire-haired_fawn_1.jpg?width=1024"
+      "photo_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Portuguese_Podengo_Pequeno_Wire-haired_fawn_1.jpg?width=1024",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/105",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/105-portugalsky-podengo.pdf"
     },
     {
       "id": "breed_158",
@@ -3012,7 +3026,9 @@
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/094g05-en.pdf",
       "fci_section_name_en": "Primitive type - Hunting Dogs",
       "fci_country_en": "PORTUGAL",
-      "photo_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Portuguese_Podengo_Pequeno_Wire-haired_fawn_1.jpg?width=1024"
+      "photo_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Portuguese_Podengo_Pequeno_Wire-haired_fawn_1.jpg?width=1024",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/105",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/105-portugalsky-podengo.pdf"
     },
     {
       "id": "breed_159",
@@ -3032,7 +3048,9 @@
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/094g05-en.pdf",
       "fci_section_name_en": "Primitive type - Hunting Dogs",
       "fci_country_en": "PORTUGAL",
-      "photo_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Portuguese_Podengo_Pequeno_Wire-haired_fawn_1.jpg?width=1024"
+      "photo_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Portuguese_Podengo_Pequeno_Wire-haired_fawn_1.jpg?width=1024",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/105",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/105-portugalsky-podengo.pdf"
     },
     {
       "id": "breed_160",
@@ -3158,7 +3176,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/097g05-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/097g05-en.pdf",
       "fci_section_name_en": "European Spitz",
-      "fci_country_en": "GERMANY"
+      "fci_country_en": "GERMANY",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/112",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/112-nemecky-spic-velky.pdf"
     },
     {
       "id": "breed_166",
@@ -3198,7 +3218,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/097g05-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/097g05-en.pdf",
       "fci_section_name_en": "European Spitz",
-      "fci_country_en": "GERMANY"
+      "fci_country_en": "GERMANY",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/110",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/110-nemecky-spic-stredni.pdf"
     },
     {
       "id": "breed_168",
@@ -3217,7 +3239,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/097g05-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/097g05-en.pdf",
       "fci_section_name_en": "European Spitz",
-      "fci_country_en": "GERMANY"
+      "fci_country_en": "GERMANY",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/110",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/110-nemecky-spic-stredni.pdf"
     },
     {
       "id": "breed_169",
@@ -3257,7 +3281,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/097g05-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/097g05-en.pdf",
       "fci_section_name_en": "European Spitz",
-      "fci_country_en": "GERMANY"
+      "fci_country_en": "GERMANY",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/109",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/109-nemecky-spic-maly.pdf"
     },
     {
       "id": "breed_171",
@@ -3276,7 +3302,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/097g05-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/097g05-en.pdf",
       "fci_section_name_en": "European Spitz",
-      "fci_country_en": "GERMANY"
+      "fci_country_en": "GERMANY",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/109",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/109-nemecky-spic-maly.pdf"
     },
     {
       "id": "breed_172",
@@ -3669,7 +3697,7 @@
     },
     {
       "id": "breed_193",
-      "cs": "Canaanský pes",
+      "cs": "Kanaánský pes",
       "en": "Canaan Dog",
       "group": 5,
       "section": "5.6",
@@ -3753,7 +3781,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/289g05.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/289g05-en.pdf",
       "fci_section_name_en": "Nordic Watchdogs and Herders",
-      "fci_country_en": "ICELAND"
+      "fci_country_en": "ICELAND",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/337",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/337-islandsky-ovcacky-pes.pdf"
     },
     {
       "id": "breed_198",
@@ -4389,7 +4419,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/059g06-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/059g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "SWITZERLAND"
+      "fci_country_en": "SWITZERLAND",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/60",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/60-svycarsky-honic.pdf"
     },
     {
       "id": "breed_233",
@@ -4407,7 +4439,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/059g06-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/059g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "SWITZERLAND"
+      "fci_country_en": "SWITZERLAND",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/60",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/60-svycarsky-honic.pdf"
     },
     {
       "id": "breed_234",
@@ -4425,7 +4459,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/059g06-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/059g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "SWITZERLAND"
+      "fci_country_en": "SWITZERLAND",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/60",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/60-svycarsky-honic.pdf"
     },
     {
       "id": "breed_235",
@@ -4443,7 +4479,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/059g06-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/059g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "SWITZERLAND"
+      "fci_country_en": "SWITZERLAND",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/60",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/60-svycarsky-honic.pdf"
     },
     {
       "id": "breed_236",
@@ -4462,7 +4500,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/060g06-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/060g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "SWITZERLAND"
+      "fci_country_en": "SWITZERLAND",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/65",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/65-svycarsky-nizkonohy-honic.pdf"
     },
     {
       "id": "breed_237",
@@ -4481,7 +4521,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/060g06-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/060g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "SWITZERLAND"
+      "fci_country_en": "SWITZERLAND",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/65",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/65-svycarsky-nizkonohy-honic.pdf"
     },
     {
       "id": "breed_238",
@@ -4500,7 +4542,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/060g06-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/060g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "SWITZERLAND"
+      "fci_country_en": "SWITZERLAND",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/65",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/65-svycarsky-nizkonohy-honic.pdf"
     },
     {
       "id": "breed_239",
@@ -4519,7 +4563,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/060g06-1.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/060g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "SWITZERLAND"
+      "fci_country_en": "SWITZERLAND",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/65",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/65-svycarsky-nizkonohy-honic.pdf"
     },
     {
       "id": "breed_240",
@@ -4769,7 +4815,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/229g06.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/229g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "SERBIA"
+      "fci_country_en": "SERBIA",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/281",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/281-srbsky-trikolorni-honic.pdf"
     },
     {
       "id": "breed_254",
@@ -5149,7 +5197,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/279g06.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/279g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "MONTENEGRO"
+      "fci_country_en": "MONTENEGRO",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/328",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/328-cernohorsky-planinsky-honic.pdf"
     },
     {
       "id": "breed_275",
@@ -5201,7 +5251,9 @@
       "fci_illustration_url": "",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/299g06-en.pdf",
       "fci_section_name_en": "Scent hounds",
-      "fci_country_en": "GERMANY"
+      "fci_country_en": "GERMANY",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/347",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/347-nemecky-brakyr.pdf"
     },
     {
       "id": "breed_278",
@@ -5779,7 +5831,9 @@
       "fci_illustration_url": "https://www.fci.be/Nomenclature/Illustrations/133g07.jpg",
       "fci_standard_pdf_url": "https://www.fci.be/Nomenclature/Standards/133g07-en.pdf",
       "fci_section_name_en": "Continental Pointing Dogs",
-      "fci_country_en": "FRANCE"
+      "fci_country_en": "FRANCE",
+      "cmku_url": "https://www.cmku.cz/cz/seznam-plemen-159/150",
+      "cmku_popis_pdf": "https://www.cmku.cz/data/plemena_popisy/150-francouzsky-ohar-kratkosrsty-gaskon-typu.pdf"
     },
     {
       "id": "breed_310",
