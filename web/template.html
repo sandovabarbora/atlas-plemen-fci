@@ -2063,13 +2063,20 @@ const Quiz = (function() {
       text = cut.slice(0, cut.lastIndexOf(' ')) + '…';
     }
     textEl.textContent = text;
+    // Make the provenance explicit: this is a quote from Wikipedia, not our claim.
+    const links = block.querySelector('.edu-links');
     if (info.page_url) {
       const wiki = document.createElement('a');
       wiki.href = info.page_url;
       wiki.target = '_blank';
       wiki.rel = 'noopener';
-      wiki.textContent = (info.lang === 'cs' ? 'Wikipedie' : 'Wikipedia (en)') + ' ↗';
-      block.querySelector('.edu-links').prepend(wiki);
+      wiki.textContent = (info.lang === 'cs' ? 'Zdroj: Wikipedie' : 'Zdroj: Wikipedia (en)') + ' ↗';
+      links.prepend(wiki);
+    } else {
+      const cap = document.createElement('span');
+      cap.className = 'edu-loading';
+      cap.textContent = info.lang === 'cs' ? 'Zdroj: Wikipedie' : 'Zdroj: Wikipedia (en)';
+      links.prepend(cap);
     }
   }
 
