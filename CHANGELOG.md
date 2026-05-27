@@ -34,6 +34,25 @@ Enrichment iterace: z funkčního prototypu na produkční datový základ.
 - 1 plemeno (`breed_102`, Jihovýchodoevropský ovčák) zůstává bez FCI metadat,
   viz `reports/open_questions.md`.
 
+### Added (interaktivní doladění)
+- Profil plemene má sekci **„O plemeni"**: krátký popis z Wikipedie (cs, fallback
+  en; zdrojovaný text CC-BY-SA, nic generovaného) vedle FCI faktů z naší DB,
+  plus odkazy na článek a FCI standard.
+- **Coat-specific fotky** pro 5 plemen se srstí (jezevčík, čivava, výmar, ruský
+  toy, podengo): srst se pozná, velikost ne, tak velikost slučujeme.
+- **Drill mode** (jen box 1), kombinovaný režim „Plemeno + zařazení",
+  otáčecí kartičky a výběr „Projet vše" (náhodně, ale pokryje vše).
+- Nasazeno na GitHub Pages (auto-deploy z `main`).
+
+### Fixed (interaktivní doladění)
+- „Fotka není k dispozici" se objevovala často: dočasná selhání (Wikipedia 429,
+  výpadky) se ukládala natrvalo. Nově se persistují jen úspěchy, selhání se
+  zkouší znovu při dalším načtení; service worker cachuje jen obrázky.
+- Poznávací otázka u variantních plemen byla neřešitelná (9 jezevčíků = jedna
+  sdílená ilustrace). Distraktory teď nesdílí ilustraci; srst zůstává jako
+  rozlišení se správnou fotkou.
+- Když FCI ilustrace selže, padá to na Wikipedii (a přepíše cache).
+
 ### Added (pokračování iterace)
 - Kvíz: režim **Plemeno + zařazení** (vícestupňový: plemeno → skupina → sekce,
   správně jen když vše) a **otáčecí kartička** (odhalení + sebehodnocení).

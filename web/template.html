@@ -282,6 +282,26 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   font-weight: 600;
   letter-spacing: -0.01em;
 }
+.feedback .edu {
+  margin-top: 0.85rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--line);
+}
+.feedback .edu-text {
+  margin: 0.2rem 0 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.feedback .edu-loading { color: var(--ink-faint); font-style: italic; }
+.feedback .edu-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.feedback .edu-links a {
+  font-size: 0.8rem;
+  color: var(--accent-deep);
+  text-decoration: none;
+  font-weight: 500;
+}
+.feedback .edu-links a:hover { text-decoration: underline; }
 .feedback .sol-name {
   font-family: 'Fraunces', serif;
   font-size: 1.15rem;
@@ -1072,6 +1092,69 @@ const BreedPhotos = (function() {
 })();
 
 // ============================================================
+// BREED INFO (Wikipedia extract for the "O plemeni" edu section)
+// Sourced text only (CC-BY-SA Wikipedia), never generated. cs preferred, en
+// fallback. Only successful results are persisted; failures retry on reload.
+// ============================================================
+const BreedInfo = (function() {
+  const CACHE_KEY = 'atlas:info-cache-v1';
+  let cache = {};
+  let failed = {};
+  let loaded = false;
+  let pending = {};
+
+  async function ensureLoaded() {
+    if (loaded) return;
+    const stored = await Storage.get(CACHE_KEY) || {};
+    for (const k in stored) { if (stored[k] && stored[k].error) delete stored[k]; }
+    cache = stored;
+    loaded = true;
+  }
+
+  async function trySummary(lang, title) {
+    const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`;
+    try {
+      const resp = await fetch(url, { headers: { 'Accept': 'application/json' } });
+      if (!resp.ok) return null;
+      const d = await resp.json();
+      if (d.type === 'disambiguation' || d.type === 'no-extract' || !d.extract) return null;
+      return {
+        extract: d.extract,
+        page_url: (d.content_urls && d.content_urls.desktop && d.content_urls.desktop.page) || null,
+        lang,
+      };
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function fetchInfo(breed) {
+    await ensureLoaded();
+    if (cache[breed.id]) return cache[breed.id];
+    if (failed[breed.id]) return { error: true };
+    if (pending[breed.id]) return pending[breed.id];
+
+    const promise = (async () => {
+      let r = await trySummary('cs', breed.cs);
+      if (!r) {
+        const s = breed.cs.replace(/\s*\([^)]*\)/g, '').split(/[-—]/)[0].trim();
+        if (s !== breed.cs) r = await trySummary('cs', s);
+      }
+      if (!r) r = await trySummary('en', breed.en);
+      const res = r || { error: true };
+      if (res.error) failed[breed.id] = true;
+      else { cache[breed.id] = res; Storage.set(CACHE_KEY, cache).catch(() => {}); }
+      delete pending[breed.id];
+      return res;
+    })();
+    pending[breed.id] = promise;
+    return promise;
+  }
+
+  return { fetchInfo };
+})();
+
+// ============================================================
 // LEITNER STATE MANAGEMENT
 // 5 boxes: new items start in box 1, correct moves up, wrong drops to box 1.
 // Box selection weight: 1=50%, 2=25%, 3=12.5%, 4=7%, 5=5.5%
@@ -1837,6 +1920,7 @@ const Quiz = (function() {
     fb.innerHTML = `<h4>${q._allCorrect ? '✓ Vše správně' : '✗ Něco chybělo'}</h4>`
       + `<div class="step-status">${breakdown}</div>` + solutionDl(q.breed);
     fb.className = 'feedback visible ' + (q._allCorrect ? 'correct' : 'wrong');
+    loadBreedInfo(q.breed);
   }
 
   // --- Flip card (otáčecí kartička) ---
@@ -1868,6 +1952,7 @@ const Quiz = (function() {
     document.getElementById('options').style.display = 'none';
     document.getElementById('flip-known').addEventListener('click', () => flipGrade(true));
     document.getElementById('flip-unknown').addEventListener('click', () => flipGrade(false));
+    loadBreedInfo(b);
   }
 
   async function flipGrade(correct) {
@@ -1948,13 +2033,51 @@ const Quiz = (function() {
         <dt>Originál</dt>
         <dd><em>${escapeHtml(b.en)}</em></dd>
         ${variantsHtml}
-      </dl>`;
+      </dl>
+      <div class="edu" id="edu-block" data-breed-id="${escapeHtml(b.id)}">
+        <div class="label">O plemeni</div>
+        <p class="edu-text" id="edu-text"><span class="edu-loading">načítám popis…</span></p>
+        <div class="edu-links" id="edu-links">${
+          b.fci_standard_pdf_url
+            ? `<a href="${escapeHtml(b.fci_standard_pdf_url)}" target="_blank" rel="noopener">Standard FCI ↗</a>`
+            : ''
+        }</div>
+      </div>`;
+  }
+
+  // Fill the "O plemeni" section with the Wikipedia extract (sourced text).
+  async function loadBreedInfo(breed) {
+    const info = await BreedInfo.fetchInfo(breed);
+    const block = document.getElementById('edu-block');
+    // Still showing this breed's profile?
+    if (!block || block.getAttribute('data-breed-id') !== breed.id) return;
+    const textEl = block.querySelector('.edu-text');
+    if (info.error || !info.extract) {
+      textEl.innerHTML = '<span class="edu-loading">Popis není k dispozici.</span>';
+      return;
+    }
+    // Trim to ~2-3 sentences for the card; full article is one click away.
+    let text = info.extract.trim();
+    if (text.length > 320) {
+      const cut = text.slice(0, 320);
+      text = cut.slice(0, cut.lastIndexOf(' ')) + '…';
+    }
+    textEl.textContent = text;
+    if (info.page_url) {
+      const wiki = document.createElement('a');
+      wiki.href = info.page_url;
+      wiki.target = '_blank';
+      wiki.rel = 'noopener';
+      wiki.textContent = (info.lang === 'cs' ? 'Wikipedie' : 'Wikipedia (en)') + ' ↗';
+      block.querySelector('.edu-links').prepend(wiki);
+    }
   }
 
   function showFeedback(correct) {
     const fb = document.getElementById('feedback');
     fb.innerHTML = `<h4>${correct ? '✓ Správně' : '✗ Špatně'}</h4>` + solutionDl(currentBreed);
     fb.className = 'feedback visible ' + (correct ? 'correct' : 'wrong');
+    loadBreedInfo(currentBreed);
   }
 
   function labelForMode(mode) {
