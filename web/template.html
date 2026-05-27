@@ -981,14 +981,39 @@ const BreedPhotos = (function() {
     const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, '_'))}`;
     try {
       const resp = await fetch(url, { headers: { 'Accept': 'application/json' } });
-      if (!resp.ok) return null;
+      if (!resp.ok) {
+        console.debug(`[photo:try] ${lang}.wiki "${title}" -> HTTP ${resp.status}`);
+        return null;
+      }
       const data = await resp.json();
-      if (data.type === 'disambiguation' || data.type === 'no-extract') return null;
-      if (!data.thumbnail || !data.thumbnail.source) return null;
+      if (data.type === 'disambiguation' || data.type === 'no-extract') {
+        console.debug(`[photo:try] ${lang}.wiki "${title}" -> ${data.type} (skip)`);
+        return null;
+      }
+      if (!data.thumbnail || !data.thumbnail.source) {
+        console.debug(`[photo:try] ${lang}.wiki "${title}" -> no thumbnail`);
+        return null;
+      }
+      // Pick a URL the API has actually rendered. The previous code rewrote the
+      // thumbnail width to /640px-, but Wikimedia only serves a fixed set of
+      // thumbnail widths per file and NEVER upscales past the original — any
+      // other width returns HTTP 400, which broke the vast majority of photos.
+      // Prefer the full original (always valid, good quality) unless it is
+      // oversized, in which case the API's own thumbnail (also always valid).
+      const orig = data.originalimage;
+      const thumb = data.thumbnail;
+      const useOrig = orig && orig.source && (orig.width || 0) <= 2000;
+      const chosen = useOrig ? orig : thumb;
+      // Surface the resolved title + dims so wrong-article matches and tiny
+      // images (the "crap photo" cases) are visible in the console.
+      console.debug(`[photo:try] ${lang}.wiki "${title}" -> matched "${data.title}"`,
+        `${useOrig ? 'orig' : 'thumb'} ${chosen.width}x${chosen.height}`, chosen.source);
       return {
-        image: data.thumbnail.source.replace(/\/\d+px-/, '/640px-'), // upscale to 640px
+        image: chosen.source,
         source: lang === 'cs' ? 'cs.wiki' : 'en.wiki',
         page_url: data.content_urls && data.content_urls.desktop && data.content_urls.desktop.page,
+        _matchedTitle: data.title,
+        _thumbW: chosen.width, _thumbH: chosen.height,
       };
     } catch (e) {
       console.warn(`[BreedPhotos] ${lang} fetch failed for ${title}:`, e.message);
@@ -1030,6 +1055,10 @@ const BreedPhotos = (function() {
       if (!result) result = await commonsSearch(breed);
 
       const finalResult = result || { error: true, breed_id: breed.id };
+      console.info('[photo]', breed.id, breed.cs, '->',
+        finalResult.error ? 'NO IMAGE' : finalResult.source,
+        finalResult._matchedTitle ? `(matched "${finalResult._matchedTitle}" ${finalResult._thumbW}x${finalResult._thumbH})` : '',
+        finalResult.image || '');
       // Only PERSIST successes. Failures are kept in-memory so the next reload
       // retries them (transient 429s/blips must not stick permanently).
       if (finalResult.error) {
@@ -2477,6 +2506,9 @@ async function init() {
 
 // Make Quiz globally accessible for inline onclick handlers
 window.Quiz = Quiz;
+// Exposed for diagnostics/automation (Playwright photo-audit).
+window.BreedPhotos = BreedPhotos;
+window.BREED_DB = BREED_DB;
 
 // Boot
 init().catch(e => {
