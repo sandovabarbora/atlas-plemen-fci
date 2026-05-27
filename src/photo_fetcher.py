@@ -136,19 +136,7 @@ class BreedPhotoFetcher:
             logger.info("  curated photo failed for %s (%s), falling back",
                         breed["cs"], result.error)
 
-        # 1. Official FCI illustration (groups 1-10 that have one).
-        illustration = breed.get("fci_illustration_url")
-        if illustration:
-            result = self._download(
-                breed_id, illustration, source="fci",
-                page_url=breed.get("fci_url"), name_suffix="fci",
-            )
-            if result.ok:
-                return result
-            logger.info("  FCI illustration failed for %s (%s), falling back to wiki",
-                        breed["cs"], result.error)
-
-        # 2-5. Wikipedia cascade.
+        # 1. Real photo from the Wikipedia article (preferred over the FCI drawing).
         attempts: list[tuple[str, str]] = [("cs", breed["cs"])]
         simplified_cs = breed["cs"].split("(")[0].split("—")[0].split(" - ")[0].strip()
         if simplified_cs != breed["cs"]:
@@ -164,7 +152,48 @@ class BreedPhotoFetcher:
             if result.ok:
                 return result
 
+        # 2. Official FCI illustration (line drawing) as a fallback.
+        illustration = breed.get("fci_illustration_url")
+        if illustration:
+            result = self._download(
+                breed_id, illustration, source="fci",
+                page_url=breed.get("fci_url"), name_suffix="fci",
+            )
+            if result.ok:
+                return result
+
+        # 3. Wikimedia Commons search (CC-licensed) to fill genuine gaps.
+        result = self._fetch_commons(breed_id, breed["en"])
+        time.sleep(self.sleep_seconds)
+        if result.ok:
+            return result
+
         return PhotoResult(breed_id=breed_id, error="no image found")
+
+    def _fetch_commons(self, breed_id: str, name_en: str) -> PhotoResult:
+        """Search Wikimedia Commons for a CC-licensed breed photo."""
+        try:
+            params = {
+                "action": "query", "generator": "search", "gsrnamespace": "6",
+                "gsrsearch": f"{name_en} dog", "gsrlimit": "1", "prop": "imageinfo",
+                "iiprop": "url", "iiurlwidth": "800", "format": "json",
+            }
+            resp = self.session.get("https://commons.wikimedia.org/w/api.php",
+                                    params=params, timeout=15)
+            if resp.status_code != 200:
+                return PhotoResult(breed_id=breed_id, error=f"commons HTTP {resp.status_code}")
+            pages = (resp.json().get("query", {}) or {}).get("pages", {})
+            if not pages:
+                return PhotoResult(breed_id=breed_id, error="no commons result")
+            ii = (next(iter(pages.values())).get("imageinfo") or [{}])[0]
+            if not ii.get("thumburl"):
+                return PhotoResult(breed_id=breed_id, error="no commons image")
+            return self._download(
+                breed_id, ii["thumburl"], source="commons",
+                page_url=ii.get("descriptionurl"), name_suffix="commons",
+            )
+        except requests.RequestException as e:
+            return PhotoResult(breed_id=breed_id, error=str(e))
 
     def _fetch_wiki(self, breed_id: str, lang: str, title: str) -> PhotoResult:
         try:

@@ -29,7 +29,7 @@ class FakeSession:
         self.routes = routes
         self.calls: list[str] = []
 
-    def get(self, url: str, timeout: int = 0) -> FakeResponse:
+    def get(self, url: str, params: dict | None = None, timeout: int = 0) -> FakeResponse:
         self.calls.append(url)
         for key, resp in self.routes.items():
             if key in url:
@@ -116,6 +116,43 @@ def test_fci_failure_falls_back_to_wiki(tmp_path: Path) -> None:
     result = f.fetch(breed)
     assert result.ok
     assert result.source in ("cs.wiki", "en.wiki")
+
+
+def test_commons_fallback_fills_gap(tmp_path: Path) -> None:
+    # No photo_url, no wiki photo, no FCI illustration -> Commons search.
+    breed = {"id": "breed_009", "cs": "Katahoula", "en": "Catahoula Leopard Dog"}
+    routes = {
+        "wikipedia.org": FakeResponse(404),
+        "commons.wikimedia.org": FakeResponse(200, json_data={
+            "query": {"pages": {"1": {"imageinfo": [{
+                "thumburl": "https://upload/catahoula.jpg",
+                "descriptionurl": "https://commons/File:Catahoula.jpg",
+            }]}}},
+        }),
+        "upload/catahoula.jpg": FakeResponse(200, content=b"img"),
+    }
+    f = _fetcher(tmp_path, routes)
+    result = f.fetch(breed)
+    assert result.ok
+    assert result.source == "commons"
+    assert result.local_path.name == "breed_009_commons.jpg"
+
+
+def test_wiki_preferred_over_fci(tmp_path: Path) -> None:
+    breed = {"id": "breed_010", "cs": "Pes", "en": "Dog",
+             "fci_illustration_url": "https://fci/1.jpg"}
+    routes = {
+        "wikipedia.org": FakeResponse(200, json_data={
+            "type": "standard",
+            "thumbnail": {"source": "https://upload/dog.jpg"},
+            "content_urls": {"desktop": {"page": "https://cs.wiki/Pes"}},
+        }),
+        "upload/dog.jpg": FakeResponse(200, content=b"img"),
+        "fci/1.jpg": FakeResponse(200, content=b"drawing"),
+    }
+    f = _fetcher(tmp_path, routes)
+    result = f.fetch(breed)
+    assert result.source in ("cs.wiki", "en.wiki")  # real photo wins over FCI drawing
 
 
 def test_fetch_uses_cache_on_second_call(tmp_path: Path) -> None:

@@ -1010,29 +1010,24 @@ const BreedPhotos = (function() {
     const promise = (async () => {
       let result = null;
 
-      // 0. Curated coat-specific photo (e.g. dachshund smooth/long/wire), which
-      // overrides the single shared FCI drawing for visually-distinct coats.
+      // 0. Curated coat-specific photo (dachshund smooth/long/wire, etc.).
       if (breed.photo_url) {
         result = {
-          image: breed.photo_url,
-          source: 'photo',
-          page_url: breed.fci_url || null,
-          standard_pdf_url: breed.fci_standard_pdf_url || null,
+          image: breed.photo_url, source: 'photo',
+          page_url: breed.fci_url || null, standard_pdf_url: breed.fci_standard_pdf_url || null,
         };
       }
-
-      // 1. Official FCI illustration (groups 1-10 only; some breeds lack one).
+      // 1. Real photo from the Wikipedia article (preferred over the FCI drawing).
+      if (!result) result = await wikiCascade(breed);
+      // 2. Official FCI illustration (a line drawing) as a fallback.
       if (!result && breed.fci_illustration_url) {
         result = {
-          image: breed.fci_illustration_url,
-          source: 'fci',
-          page_url: breed.fci_url || null,
-          standard_pdf_url: breed.fci_standard_pdf_url || null,
+          image: breed.fci_illustration_url, source: 'fci',
+          page_url: breed.fci_url || null, standard_pdf_url: breed.fci_standard_pdf_url || null,
         };
       }
-
-      // 2-5. Wikipedia cascade (also the only path for non-FCI group 11).
-      if (!result) result = await wikiCascade(breed);
+      // 3. Wikimedia Commons search (CC-licensed) to fill genuine gaps.
+      if (!result) result = await commonsSearch(breed);
 
       const finalResult = result || { error: true, breed_id: breed.id };
       // Only PERSIST successes. Failures are kept in-memory so the next reload
@@ -1066,12 +1061,42 @@ const BreedPhotos = (function() {
     return result;
   }
 
-  // Fallback used when an FCI illustration fails to load in the browser: resolve
-  // a Wikipedia photo and OVERWRITE the cached entry so the broken FCI URL is
-  // not retried next time. Guarantees a photo shows whenever Wikipedia has one.
-  async function resolveWiki(breed) {
+  // Wikimedia Commons search (CC-licensed photos, with attribution). Used to
+  // fill genuine gaps where no Wikipedia article photo and no FCI illustration
+  // exist. origin=* enables anonymous CORS from the browser.
+  async function commonsSearch(breed) {
+    const term = encodeURIComponent(`${breed.en} dog`);
+    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search`
+      + `&gsrnamespace=6&gsrsearch=${term}&gsrlimit=1&prop=imageinfo`
+      + `&iiprop=url|extmetadata&iiurlwidth=800&format=json&origin=*`;
+    try {
+      const resp = await fetch(url, { headers: { 'Accept': 'application/json' } });
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      const pages = (data.query && data.query.pages) || {};
+      const page = Object.values(pages)[0];
+      const ii = page && page.imageinfo && page.imageinfo[0];
+      if (!ii || !ii.thumburl) return null;
+      const em = ii.extmetadata || {};
+      return {
+        image: ii.thumburl,
+        source: 'commons',
+        page_url: ii.descriptionurl || null,
+        license: (em.LicenseShortName && em.LicenseShortName.value) || 'CC',
+      };
+    } catch (e) {
+      console.warn('[BreedPhotos] commons search failed:', e.message);
+      return null;
+    }
+  }
+
+  // Fallback when the chosen image fails to LOAD in the browser: try a real
+  // Wikipedia photo, then Commons, and OVERWRITE the cached entry so a broken
+  // URL is not retried. Guarantees a photo whenever any source has one.
+  async function resolveFallback(breed) {
     await ensureLoaded();
-    const result = (await wikiCascade(breed)) || { error: true, breed_id: breed.id };
+    const result = (await wikiCascade(breed)) || (await commonsSearch(breed))
+      || { error: true, breed_id: breed.id };
     if (result.error) {
       failed[breed.id] = true;
     } else {
@@ -1088,7 +1113,7 @@ const BreedPhotos = (function() {
     await Storage.remove(CACHE_KEY);
   }
 
-  return { fetchBreedImage, resolveWiki, clearCache };
+  return { fetchBreedImage, resolveFallback, clearCache };
 })();
 
 // ============================================================
@@ -1726,6 +1751,12 @@ const Quiz = (function() {
       if (result.standard_pdf_url) {
         parts.push(`<a href="${escapeHtml(result.standard_pdf_url)}" target="_blank" rel="noopener">Standard FCI ↗</a>`);
       }
+    } else if (result.source === 'commons') {
+      parts.push('<span class="src-badge src-wiki">foto</span>');
+      if (result.page_url) {
+        const lic = result.license ? ` (${escapeHtml(result.license)})` : '';
+        parts.push(`<a href="${escapeHtml(result.page_url)}" target="_blank" rel="noopener">Wikimedia${lic} ↗</a>`);
+      }
     } else if (result.source) {
       const label = result.source === 'cs.wiki' ? 'cs wiki' : 'en wiki';
       parts.push(`<span class="src-badge src-wiki">${label}</span>`);
@@ -1771,18 +1802,16 @@ const Quiz = (function() {
         img.src = res.image;
       };
 
-      // If the FCI illustration fails to load (missing/404), fall back to the
-      // Wikipedia cascade so a photo always appears when one exists.
+      // If the chosen image fails to load, fall back (Wikipedia photo, then
+      // Commons) so a photo appears whenever any source has one.
       img.onerror = async () => {
-        if (result.source === 'fci' || result.source === 'photo') {
-          placeholder.innerHTML = '<span class="spinner"></span>&nbsp; zkouším Wikipedii';
-          const alt = await BreedPhotos.resolveWiki(breed);
-          if (currentBreed && currentBreed.id !== breed.id) return;
-          if (alt.image) {
-            img.onerror = () => { placeholder.textContent = 'Fotku se nepodařilo načíst'; };
-            showImage(alt);
-            return;
-          }
+        placeholder.innerHTML = '<span class="spinner"></span>&nbsp; hledám fotku';
+        const alt = await BreedPhotos.resolveFallback(breed);
+        if (currentBreed && currentBreed.id !== breed.id) return;
+        if (alt.image && alt.image !== result.image) {
+          img.onerror = () => { placeholder.textContent = 'Fotku se nepodařilo načíst'; };
+          showImage(alt);
+          return;
         }
         placeholder.textContent = 'Fotku se nepodařilo načíst';
       };
