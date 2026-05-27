@@ -4,7 +4,7 @@
 //   - breed photos (FCI illustrations, Wikipedia images): network-first with a
 //     cache fallback, so fresh photos win online but cached ones work offline
 //   - Wikipedia summary JSON: network-first, cached so a breed seen once works offline
-const VERSION = 'atlas-v2';
+const VERSION = 'atlas-v3';
 const SHELL_CACHE = `${VERSION}-shell`;
 const PHOTO_CACHE = `${VERSION}-photos`;
 
@@ -39,14 +39,29 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
   const url = new URL(request.url);
 
-  // Same-origin shell assets: cache-first.
   if (url.origin === self.location.origin) {
+    // The HTML document: NETWORK-FIRST so new deploys propagate immediately;
+    // fall back to cache when offline. (Cache-first here made deploys stick.)
+    const isDocument = request.mode === 'navigate'
+      || url.pathname.endsWith('/')
+      || url.pathname.endsWith('/index.html');
+    if (isDocument) {
+      event.respondWith(
+        fetch(request).then((resp) => {
+          const copy = resp.clone();
+          caches.open(SHELL_CACHE).then((cache) => cache.put(request, copy)).catch(() => {});
+          return resp;
+        }).catch(() => caches.match(request).then((c) => c || caches.match('./index.html')))
+      );
+      return;
+    }
+    // Other static assets (icons, manifest, sw): cache-first.
     event.respondWith(
       caches.match(request).then((cached) => cached || fetch(request).then((resp) => {
         const copy = resp.clone();
         caches.open(SHELL_CACHE).then((cache) => cache.put(request, copy)).catch(() => {});
         return resp;
-      }).catch(() => caches.match('./index.html')))
+      }))
     );
     return;
   }
